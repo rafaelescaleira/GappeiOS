@@ -2214,6 +2214,9 @@ Aulas extras de futsal e ballet;</string>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-tc-pp2">
                                 <rect key="frame" x="75" y="81" width="230" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="cCU-4R-aGe"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
