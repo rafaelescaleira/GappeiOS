@@ -1,0 +1,249 @@
+
+/* Class = "UITextView"; text = " Os alunos da Escola GAPPE vão se apropriando dos conhecimentos e construindo valores que contribuirão com sua formação com base nas observações, nas experimentações, nas perguntas e nos desafios lançados.\n  O contato com a realidade estudada em sala de aula é proporcionada através de aulas-passeio, viagens, experimentos e vivências, e os estudos realizados pelos alunos são socializados com a comunidade. Ainda é oportunizado momentos aos alunos para que desenvolvam a criatividade, a expressão e o movimento, por meio de atividades significativas e desafiadoras."; ObjectID = "0lz-uA-U0Q"; */
+"0lz-uA-U0Q.text" = " Os alunos da Escola GAPPE vão se apropriando dos conhecimentos e construindo valores que contribuirão com sua formação com base nas observações, nas experimentações, nas perguntas e nos desafios lançados.\n  O contato com a realidade estudada em sala de aula é proporcionada através de aulas-passeio, viagens, experimentos e vivências, e os estudos realizados pelos alunos são socializados com a comunidade. Ainda é oportunizado momentos aos alunos para que desenvolvam a criatividade, a expressão e o movimento, por meio de atividades significativas e desafiadoras.";
+
+/* Class = "UILabel"; text = "Mensagens"; ObjectID = "1u3-lQ-jGX"; */
+"1u3-lQ-jGX.text" = "Mensagens";
+
+/* Class = "UITextView"; text = " A Iniciação Científica da Escola GAPPE busca despertar a vocação científica e incentivar talentos potenciais entre os alunos e tem como objetivo formar pessoas capazes de buscar conhecimentos e saber utilizá-los, fazendo com que elas não sejam, apenas, usuários e sim produtores de conhecimentos. Através da pesquisa, buscam respostas para problemas e se aprofundam em temas que lhes interessam, além de participarem de atividades de pesquisa científica ou tecnológica, orientadas por professores qualificados."; ObjectID = "2gg-gh-4hE"; */
+"2gg-gh-4hE.text" = " A Iniciação Científica da Escola GAPPE busca despertar a vocação científica e incentivar talentos potenciais entre os alunos e tem como objetivo formar pessoas capazes de buscar conhecimentos e saber utilizá-los, fazendo com que elas não sejam, apenas, usuários e sim produtores de conhecimentos. Através da pesquisa, buscam respostas para problemas e se aprofundam em temas que lhes interessam, além de participarem de atividades de pesquisa científica ou tecnológica, orientadas por professores qualificados.";
+
+/* Class = "UITextField"; placeholder = "Repetir Senha"; ObjectID = "3LY-I9-fWY"; */
+"3LY-I9-fWY.placeholder" = "Repetir Senha";
+
+/* Class = "UIButton"; normalTitle = "Acessar"; ObjectID = "4h9-cV-0zW"; */
+"4h9-cV-0zW.normalTitle" = "Acessar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4pD-I4-Hh2"; */
+"4pD-I4-Hh2.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "5bc-27-tpS"; */
+"5bc-27-tpS.title" = "Voltar";
+
+/* Class = "UILabel"; text = "Proposta Pedagógica"; ObjectID = "5pj-0C-Ztu"; */
+"5pj-0C-Ztu.text" = "Proposta Pedagógica";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6SF-Zr-eS1"; */
+"6SF-Zr-eS1.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Senha Atual"; ObjectID = "6Sx-HI-lHq"; */
+"6Sx-HI-lHq.placeholder" = "Senha Atual";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "7Uj-yF-AGe"; */
+"7Uj-yF-AGe.title" = "Voltar";
+
+/* Class = "UILabel"; text = "Escola GAPPE"; ObjectID = "7ea-GB-59N"; */
+"7ea-GB-59N.text" = "Escola GAPPE";
+
+/* Class = "UITextView"; text = " A Educação Bilíngue utiliza a interdisciplinaridade como base de seu programa, em que os conteúdos escolares são integrados à língua inglesa de modo a contribuir para o desenvolvimento da língua estrangeira até atingir a fluência naturalmente. Baseia-se nas abordagens CLIL (Content and Language Integrated Learning) e CBTEFL (Content-Based Teaching of English as a Foreign Language) em que a língua inglesa é utilizada como meio de comunicação e instrução, que contribuirá para o desenvolvimento da língua estrangeira em seus diversos aspectos: vocabulário, gramática, compreensão e produção, tanto oral, quanto escrita."; ObjectID = "81h-qd-Lcn"; */
+"81h-qd-Lcn.text" = " A Educação Bilíngue utiliza a interdisciplinaridade como base de seu programa, em que os conteúdos escolares são integrados à língua inglesa de modo a contribuir para o desenvolvimento da língua estrangeira até atingir a fluência naturalmente. Baseia-se nas abordagens CLIL (Content and Language Integrated Learning) e CBTEFL (Content-Based Teaching of English as a Foreign Language) em que a língua inglesa é utilizada como meio de comunicação e instrução, que contribuirá para o desenvolvimento da língua estrangeira em seus diversos aspectos: vocabulário, gramática, compreensão e produção, tanto oral, quanto escrita.";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8Iz-2w-48F"; */
+"8Iz-2w-48F.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Enviar"; ObjectID = "8Yv-YD-gAW"; */
+"8Yv-YD-gAW.normalTitle" = "Enviar";
+
+/* Class = "UITextField"; placeholder = "Senha"; ObjectID = "95d-sW-Bip"; */
+"95d-sW-Bip.placeholder" = "Senha";
+
+/* Class = "UITextView"; text = " A Equipe de Professores é formada por pessoas qualificadas e comprometidas com o trabalho educativo, que participam de Formação Continuada, através de reuniões de estudo semanais, em que se discutem teorias que fundamentam a prática de modo a tornar o processo de ensino-aprendizagem significativo."; ObjectID = "9LS-rD-56k"; */
+"9LS-rD-56k.text" = " A Equipe de Professores é formada por pessoas qualificadas e comprometidas com o trabalho educativo, que participam de Formação Continuada, através de reuniões de estudo semanais, em que se discutem teorias que fundamentam a prática de modo a tornar o processo de ensino-aprendizagem significativo.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9RD-IY-R82"; */
+"9RD-IY-R82.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "9ba-3G-olq"; */
+"9ba-3G-olq.title" = "Voltar";
+
+/* Class = "UIButton"; normalTitle = "Salvar"; ObjectID = "9j5-qK-qQD"; */
+"9j5-qK-qQD.normalTitle" = "Salvar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "CtP-Fo-wfr"; */
+"CtP-Fo-wfr.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "FbB-hk-vea"; */
+"FbB-hk-vea.placeholder" = "E-mail";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "GJi-L8-XAO"; */
+"GJi-L8-XAO.title" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Próximo"; ObjectID = "GaA-lt-WbF"; */
+"GaA-lt-WbF.title" = "Próximo";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "Gg4-7t-gJ2"; */
+"Gg4-7t-gJ2.title" = "Voltar";
+
+/* Class = "UINavigationItem"; title = "Sobre"; ObjectID = "IEK-Ei-Glm"; */
+"IEK-Ei-Glm.title" = "Sobre";
+
+/* Class = "UILabel"; text = "Todos os direitos reservados © 2018 Escola GAPPE."; ObjectID = "Jid-Pr-grs"; */
+"Jid-Pr-grs.text" = "Todos os direitos reservados © 2018 Escola GAPPE.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Jxa-Ny-b8D"; */
+"Jxa-Ny-b8D.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "MNw-Z2-NKo"; */
+"MNw-Z2-NKo.title" = "Voltar";
+
+/* Class = "UINavigationItem"; title = "Mensagens"; ObjectID = "OrV-8F-MeU"; */
+"OrV-8F-MeU.title" = "Mensagens";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "P0j-Kc-PWn"; */
+"P0j-Kc-PWn.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Enviar"; ObjectID = "PEy-dm-iwK"; */
+"PEy-dm-iwK.normalTitle" = "Enviar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PJt-Kg-C9D"; */
+"PJt-Kg-C9D.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Nova Senha"; ObjectID = "Qm7-5l-1LW"; */
+"Qm7-5l-1LW.placeholder" = "Nova Senha";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "R5g-U6-MLU"; */
+"R5g-U6-MLU.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "RFf-wB-hwC"; */
+"RFf-wB-hwC.title" = "Voltar";
+
+/* Class = "UILabel"; text = "Sair"; ObjectID = "Rbe-EL-Qi0"; */
+"Rbe-EL-Qi0.text" = "Sair";
+
+/* Class = "UILabel"; text = "Educação Financeira"; ObjectID = "SPf-ry-tr5"; */
+"SPf-ry-tr5.text" = "Educação Financeira";
+
+/* Class = "UITextView"; text = " A Educação Empreendedora e Financeira incentiva os alunos a buscarem o autoconhecimento, propiciando a quebra de paradigmas e o desenvolvimento das habilidades e dos comportamentos empreendedores, através do desenvolvimento da autonomia e do protagonismo. Por meio de atividades lúdicas, o ambiente da aprendizagem sensibiliza os alunos a assumirem riscos calculados, a tomares decisões, a terem um olhar observador para que possam identificar ao seu redor, oportunidades de inovações, mesmo em situações desafiadoras e a serem capazes de fazer o melhor uso possível do dinheiro. "; ObjectID = "TNn-5c-xkw"; */
+"TNn-5c-xkw.text" = " A Educação Empreendedora e Financeira incentiva os alunos a buscarem o autoconhecimento, propiciando a quebra de paradigmas e o desenvolvimento das habilidades e dos comportamentos empreendedores, através do desenvolvimento da autonomia e do protagonismo. Por meio de atividades lúdicas, o ambiente da aprendizagem sensibiliza os alunos a assumirem riscos calculados, a tomares decisões, a terem um olhar observador para que possam identificar ao seu redor, oportunidades de inovações, mesmo em situações desafiadoras e a serem capazes de fazer o melhor uso possível do dinheiro. ";
+
+/* Class = "UILabel"; text = "Meu Perfil"; ObjectID = "TQg-Wq-3BX"; */
+"TQg-Wq-3BX.text" = "Meu Perfil";
+
+/* Class = "UILabel"; text = "Sobre"; ObjectID = "VuV-Fm-plV"; */
+"VuV-Fm-plV.text" = "Sobre";
+
+/* Class = "UILabel"; text = "Redefinir Senha"; ObjectID = "Vz2-cb-HqW"; */
+"Vz2-cb-HqW.text" = "Redefinir Senha";
+
+/* Class = "UITextView"; text = "  A Escola GAPPE, desde 1994, desenvolve um Projeto Educativo para alunos da Educação Infantil e Ensino Fundamental, cuja meta principal é oportunizar aos alunos a construção do conhecimento, integrando as várias áreas de estudo de maneira significativa."; ObjectID = "X9k-yb-oQe"; */
+"X9k-yb-oQe.text" = "  A Escola GAPPE, desde 1994, desenvolve um Projeto Educativo para alunos da Educação Infantil e Ensino Fundamental, cuja meta principal é oportunizar aos alunos a construção do conhecimento, integrando as várias áreas de estudo de maneira significativa.";
+
+/* Class = "UINavigationItem"; title = "Comunicado"; ObjectID = "XCS-Pe-wFA"; */
+"XCS-Pe-wFA.title" = "Comunicado";
+
+/* Class = "UILabel"; text = "Desenvolvido por:"; ObjectID = "Y0u-70-u2N"; */
+"Y0u-70-u2N.text" = "Desenvolvido por:";
+
+/* Class = "UIButton"; normalTitle = "Esqueci minha senha"; ObjectID = "Yhb-SZ-0ME"; */
+"Yhb-SZ-0ME.normalTitle" = "Esqueci minha senha";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "ZQP-Gd-2tu"; */
+"ZQP-Gd-2tu.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UINavigationItem"; title = "Comunicado"; ObjectID = "a3g-CS-ZLe"; */
+"a3g-CS-ZLe.title" = "Comunicado";
+
+/* Class = "UIBarButtonItem"; title = "Login"; ObjectID = "acC-ea-YKk"; */
+"acC-ea-YKk.title" = "Login";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "bfR-cE-fiu"; */
+"bfR-cE-fiu.placeholder" = "E-mail";
+
+/* Class = "UIButton"; normalTitle = "Enviar"; ObjectID = "cch-y5-CVH"; */
+"cch-y5-CVH.normalTitle" = "Enviar";
+
+/* Class = "UITextField"; placeholder = "Repetir Senha"; ObjectID = "dyV-rp-Rvb"; */
+"dyV-rp-Rvb.placeholder" = "Repetir Senha";
+
+/* Class = "UINavigationItem"; title = "Comunicados"; ObjectID = "eDu-X2-lGn"; */
+"eDu-X2-lGn.title" = "Comunicados";
+
+/* Class = "UILabel"; text = "Escola GAPPE"; ObjectID = "fgc-Im-A14"; */
+"fgc-Im-A14.text" = "Escola GAPPE";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gBS-T6-Vld"; */
+"gBS-T6-Vld.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Perfil"; ObjectID = "gFa-j0-kJP"; */
+"gFa-j0-kJP.title" = "Perfil";
+
+/* Class = "UIBarButtonItem"; title = "Voltar"; ObjectID = "gH1-RU-gKQ"; */
+"gH1-RU-gKQ.title" = "Voltar";
+
+/* Class = "UILabel"; text = "Comunicados"; ObjectID = "h1t-24-pfF"; */
+"h1t-24-pfF.text" = "Comunicados";
+
+/* Class = "UILabel"; text = "(xx) xxxx-xxxx"; ObjectID = "hST-vk-w4Q"; */
+"hST-vk-w4Q.text" = "(xx) xxxx-xxxx";
+
+/* Class = "UILabel"; text = "Telefone"; ObjectID = "ke1-4J-mm4"; */
+"ke1-4J-mm4.text" = "Telefone";
+
+/* Class = "UILabel"; text = "Níveis de Ensino Oferecidos"; ObjectID = "l05-JH-ZMB"; */
+"l05-JH-ZMB.text" = "Níveis de Ensino Oferecidos";
+
+/* Class = "UIBarButtonItem"; title = "Editar"; ObjectID = "lhL-WC-3s8"; */
+"lhL-WC-3s8.title" = "Editar";
+
+/* Class = "UILabel"; text = "Agenda GAPPE"; ObjectID = "lrX-Yg-DCP"; */
+"lrX-Yg-DCP.text" = "Agenda GAPPE";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lxy-tc-pp2"; */
+"lxy-tc-pp2.text" = "Label";
+
+/* Class = "UILabel"; text = "Digite seu e-mail"; ObjectID = "mkg-d8-UWx"; */
+"mkg-d8-UWx.text" = "Digite seu e-mail";
+
+/* Class = "UITextField"; placeholder = "Senha Antiga"; ObjectID = "n5N-pX-Tbu"; */
+"n5N-pX-Tbu.placeholder" = "Senha Antiga";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nke-za-rYt"; */
+"nke-za-rYt.text" = "Label";
+
+/* Class = "UILabel"; text = "Equipe Pedagógica"; ObjectID = "o2J-at-kls"; */
+"o2J-at-kls.text" = "Equipe Pedagógica";
+
+/* Class = "UITextView"; text = "Uma escola...\n... com uma proposta pedagógica consolidada,\n... que desenvolve o raciocínio,\n... que estimula a elaboração de diferentes estratégias,\n... que forma futuros Empreendedores e Líderes,\n... que amplia a visão de mundo de seus alunos,\n... que favorece a vivência da Educação Científica,\n... que proporciona uma Educação Bilíngue,\n... que forma pessoas que sabem expor suas ideias e falar em público,\n... que valoriza a cultura e a arte,\n... que estimula escritores competentes e leitores informados,\n... que resgata valores como respeito, solidariedade, autonomia e outros,\n... que contribui para o sucesso de seus alunos no Ensino Médio, ENEM, em Feiras Científicas e Tecnológicas e em Olimpíadas de Matemática, Astronomia, Robótica, entre outras."; ObjectID = "oQt-1F-c7S"; */
+"oQt-1F-c7S.text" = "Uma escola...\n... com uma proposta pedagógica consolidada,\n... que desenvolve o raciocínio,\n... que estimula a elaboração de diferentes estratégias,\n... que forma futuros Empreendedores e Líderes,\n... que amplia a visão de mundo de seus alunos,\n... que favorece a vivência da Educação Científica,\n... que proporciona uma Educação Bilíngue,\n... que forma pessoas que sabem expor suas ideias e falar em público,\n... que valoriza a cultura e a arte,\n... que estimula escritores competentes e leitores informados,\n... que resgata valores como respeito, solidariedade, autonomia e outros,\n... que contribui para o sucesso de seus alunos no Ensino Médio, ENEM, em Feiras Científicas e Tecnológicas e em Olimpíadas de Matemática, Astronomia, Robótica, entre outras.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pVR-s2-uSr"; */
+"pVR-s2-uSr.text" = "Label";
+
+/* Class = "UITextView"; text = "A Escola GAPPE oferece:\n\n*Educação Infantil \n- Nível 1 (para crianças que farão 2 anos)\n- Nível 2 (para crianças que farão 3 anos)\n- Nível 3 (para crianças que farão 4 anos)\n- Nível 4 (para crianças que farão 5 anos)\n\n*Ensino Fundamental \n- 1º ao 9º ano\n\n*Período Integral ou estendido\n\n*Clube de Astronomia\n\n*Clube de Robótica\n\n*Clube Olímpico de Matemática \n\n*Aulas extras de futsal e ballet"; ObjectID = "pep-W1-SJx"; */
+"pep-W1-SJx.text" = "A Escola GAPPE oferece:\n\n*Educação Infantil \n- Nível 1 (para crianças que farão 2 anos)\n- Nível 2 (para crianças que farão 3 anos)\n- Nível 3 (para crianças que farão 4 anos)\n- Nível 4 (para crianças que farão 5 anos)\n\n*Ensino Fundamental \n- 1º ao 9º ano\n\n*Período Integral ou estendido\n\n*Clube de Astronomia\n\n*Clube de Robótica\n\n*Clube Olímpico de Matemática \n\n*Aulas extras de futsal e ballet";
+
+/* Class = "UINavigationItem"; title = "Início"; ObjectID = "pld-ag-S5U"; */
+"pld-ag-S5U.title" = "Início";
+
+/* Class = "UITextField"; placeholder = "Nova Senha"; ObjectID = "pvQ-mk-DFa"; */
+"pvQ-mk-DFa.placeholder" = "Nova Senha";
+
+/* Class = "UILabel"; text = "Diferenciais da Escola Gappe"; ObjectID = "rZd-nQ-Kgv"; */
+"rZd-nQ-Kgv.text" = "Diferenciais da Escola Gappe";
+
+/* Class = "UIBarButtonItem"; title = "Salvar"; ObjectID = "s5i-E8-K79"; */
+"s5i-E8-K79.title" = "Salvar";
+
+/* Class = "UIButton"; normalTitle = "Ver Anexo"; ObjectID = "tPP-gT-Rql"; */
+"tPP-gT-Rql.normalTitle" = "Ver Anexo";
+
+/* Class = "UILabel"; text = "Nome Completo"; ObjectID = "uMy-Ud-b4e"; */
+"uMy-Ud-b4e.text" = "Nome Completo";
+
+/* Class = "UITextView"; text = "MISSÃO\n Contribuir para o desenvolvimento de cidadãos conscientes, críticos e sensíveis, que sejam capazes de pensar e criar situações para que o mundo se torne mais justo e humano. "; ObjectID = "v96-rE-hfr"; */
+"v96-rE-hfr.text" = "MISSÃO\n Contribuir para o desenvolvimento de cidadãos conscientes, críticos e sensíveis, que sejam capazes de pensar e criar situações para que o mundo se torne mais justo e humano. ";
+
+/* Class = "UILabel"; text = "e-mail"; ObjectID = "vo9-hX-eVF"; */
+"vo9-hX-eVF.text" = "e-mail";
+
+/* Class = "UILabel"; text = "Telefone"; ObjectID = "wkI-XF-sxq"; */
+"wkI-XF-sxq.text" = "Telefone";
+
+/* Class = "UILabel"; text = "Alterar Senha(Opcional)"; ObjectID = "yad-NQ-kAH"; */
+"yad-NQ-kAH.text" = "Alterar Senha(Opcional)";
+
+/* Class = "UINavigationItem"; title = "Agenda"; ObjectID = "z7V-Pd-XbR"; */
+"z7V-Pd-XbR.title" = "Agenda";
+
+/* Class = "UITextView"; text = "  A atualização frequente dos educadores se dá, também, pela participação em cursos, seminários, e assessorias, que subsidiam a prática pedagógica, transformando-os em referência para outros profissionais interessados na proposta pedagógica que a Escola GAPPE desenvolve."; ObjectID = "zbU-DD-TuR"; */
+"zbU-DD-TuR.text" = "  A atualização frequente dos educadores se dá, também, pela participação em cursos, seminários, e assessorias, que subsidiam a prática pedagógica, transformando-os em referência para outros profissionais interessados na proposta pedagógica que a Escola GAPPE desenvolve.";
