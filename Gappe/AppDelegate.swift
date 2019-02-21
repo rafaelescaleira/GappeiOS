@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         UINavigationBar.appearance().barTintColor = UIColor(red:0.00000, green:0.28235, blue:0.70588, alpha:1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
         
         if #available(iOS 10.0, *) {

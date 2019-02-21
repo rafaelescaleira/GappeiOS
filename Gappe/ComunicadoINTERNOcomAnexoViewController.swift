@@ -14,6 +14,9 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
     @IBOutlet weak var texto: UILabel!
     @IBOutlet weak var linkAnexo: UIButton!
 
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var noButton: UIButton!
+    
     static var id: Int = Int()
     var comunicadosDados:NSMutableArray = NSMutableArray()
     
@@ -38,6 +41,15 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+}
 
+/* Actions */
 
+extension ComunicadoINTERNOcomAnexoViewController {
+    
+    @IBAction func yesButtonPressed(_ sender: Any) {
+    }
+    @IBAction func noButtonPressed(_ sender: Any) {
+    }
 }
