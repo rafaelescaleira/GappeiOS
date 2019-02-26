@@ -17,6 +17,7 @@ class ComunicadoINTERNOViewController: UIViewController {
     @IBOutlet weak var noButton: UIButton!
     
     var comunicadosDados: NSMutableArray = NSMutableArray()
+    var comunicadoSelecionado = ComunicadosDatabase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,10 @@ class ComunicadoINTERNOViewController: UIViewController {
             self.titulo.text = dadoArray.object(at: 1) as? String
             self.texto.text = dadoArray.object(at: 2) as? String
             
-            if 
+            if comunicadoSelecionado.comunicados_recebe_resposta == "0" {
+                yesButton.alpha = 0
+                noButton.alpha = 0
+            }
         }
     }
     
@@ -86,7 +90,7 @@ extension ComunicadoINTERNOViewController {
         return (true, dataResult, "", "")
     }
     
-    /*func requestAnser(parameters: [String: Any]) {
+    func requestAnser(parameters: [String: Any], completion: @escaping (Bool, String, String) -> ()) {
         
         let url = URL(string: "http://165.227.86.154/api/comunicados/responder")!
         let session = URLSession.shared
@@ -105,59 +109,19 @@ extension ComunicadoINTERNOViewController {
             let (success, dataResult, title, message) = self.requestCompletionHandler(data: data, response: response, error: error)
             if success == false { completion(false, title, message); return }
             
-            do {
+            DispatchQueue.global(qos: .background).async {
                 
-                let json = try JSONSerialization.jsonObject(with: dataResult, options: [])
+                self.comunicadoSelecionado.comunicados_resposta = Int(String(data: dataResult, encoding: String.Encoding.utf8)!)!
+                self.comunicadoSelecionado.commit()
                 
-                if let array = json as? [String: Any], array.isEmpty == false {
+                DispatchQueue.main.async {
                     
-                    DispatchQueue.global(qos: .background).async {
-                        
-                        let lastChange = array["lastChange"] as? String ?? ""
-                        guard let changes = array["changes"] as? [Any] else { return }
-                        var index: Int = 0
-                        
-                        for data in changes {
-                            
-                            autoreleasepool {
-                                
-                                guard let userDict = data as? [String: Any] else { return }
-                                var newData = CostCenterDatabase()
-                                
-                                if database == [] {
-                                    
-                                    newData = CostCenterDatabase()
-                                    let newID = DatabaseModel.instance.getNewID(objectID: .costCenter_id, fromTable: .CostCenterDatabase)
-                                    newData.costCenter_id = newID == Int.min ? 1 : newID + 1
-                                }
-                                    
-                                else { newData = database[index] }
-                                
-                                newData.costCenter_cloudId = userDict["id"] as? Int ?? Int.min
-                                newData.costCenter_name = userDict["title"] as? String ?? ""
-                                //ATIVO
-                                newData.costCenter_isUpdate = true
-                                newData.costCenter_update = lastChange
-                                newData.commit()
-                                
-                                index = index + 1
-                            }
-                        }
-                        
-                        DispatchQueue.main.async {
-                            
-                            print("Sincronização de Centros de Custo Finalizada")
-                            completion(true, title, message)
-                        }
-                    }
+                    print("Resposta recebida")
+                    completion(true, title, message)
                 }
-                    
-                else { return }
             }
-                
-            catch {}
         })
         
         task.resume()
-    }*/
+    }
 }

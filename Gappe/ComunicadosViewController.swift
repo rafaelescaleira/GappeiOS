@@ -7,6 +7,24 @@
 //
 
 import UIKit
+import SharkORM
+
+class ComunicadosDatabase: SRKObject {
+    
+    @objc dynamic var comunicados_id: Int = 0
+    @objc dynamic var comunicados_titulo: String?
+    @objc dynamic var comunicados_tipo_id: String?
+    @objc dynamic var comunicados_texto: String?
+    @objc dynamic var comunicados_situacao: String?
+    @objc dynamic var comunicados_recebe_resposta: String?
+    @objc dynamic var comunicados_mostrar_agenda: String?
+    @objc dynamic var comunicados_data: String?
+    @objc dynamic var comunicados_criado_em: String?
+    @objc dynamic var comunicados_comunicados_responsavel_id: String?
+    @objc dynamic var comunicados_colaborador_id: String?
+    @objc dynamic var comunicados_attach: String?
+    @objc dynamic var comunicados_resposta: Int = 0
+}
 
 class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,7 +35,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
     var comunicadosObject:NSMutableArray = NSMutableArray()
     var id_user:String = ""
     let activity_view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-    
+    var idComunicado = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +88,21 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "segueSemAnexo" {
+            
+            let vcDestino = segue.destination as! ComunicadoINTERNOViewController
+            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query()?.where("comunicados_id = \(idComunicado)")?.fetch()?.firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
+        }
+        
+        if segue.identifier == "segueComAnexo" {
+            
+            let vcDestino = segue.destination as! ComunicadoINTERNOcomAnexoViewController
+            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query()?.where("comunicados_id = \(idComunicado)")?.fetch()?.firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
+        }
+    }
+    
     func getComunicados() {
         
         let configuration = URLSessionConfiguration.default
@@ -96,23 +129,42 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                                 let contador = todosEventos.count
                                 if contador > 0 {
                                     for i in 0...contador-1 {
-                                        let resultado = todosEventos[i] as? NSDictionary
                                         
-                                        let id: Int = Int(resultado!["id"] as! String)!
-                                        let titulo: String = resultado!["titulo"] as? String ?? ""
-                                        let tipo_id: String = resultado!["tipo_id"] as? String ?? ""
-                                        let texto: String = resultado!["texto"] as? String ?? ""
-                                        let situacao: String = resultado!["situacao"] as? String ?? ""
-                                        let recebe_resposta: String = resultado!["recebe_resposta"] as? String ?? ""
-                                        let mostrar_agenda: String = resultado!["mostrar_agenda"] as? String ?? ""
-                                        let data: String = resultado!["data"] as? String ?? ""
-                                        let criado_em: String = resultado!["criado_em"] as? String ?? ""
-                                        let comunicados_responsavel_id: String = resultado!["comunicados_responsavel_id"] as? String ?? ""
-                                        let colaborador_id: String = resultado!["colaborador_id"] as? String ?? ""
-                                        let attach: String = resultado!["attach"] as? String ?? ""
+                                        autoreleasepool {
+                                            
+                                            let resultado = todosEventos[i] as? NSDictionary
+                                            let novoComunicado = ComunicadosDatabase()
+                                            
+                                            let id: Int = Int(resultado!["id"] as! String)!
+                                            novoComunicado.comunicados_id = id
+                                            let titulo: String = resultado!["titulo"] as? String ?? ""
+                                            novoComunicado.comunicados_titulo = titulo
+                                            let tipo_id: String = resultado!["tipo_id"] as? String ?? ""
+                                            novoComunicado.comunicados_tipo_id = tipo_id
+                                            let texto: String = resultado!["texto"] as? String ?? ""
+                                            novoComunicado.comunicados_texto = texto
+                                            let situacao: String = resultado!["situacao"] as? String ?? ""
+                                            novoComunicado.comunicados_situacao = situacao
+                                            let recebe_resposta: String = resultado!["recebe_resposta"] as? String ?? ""
+                                            novoComunicado.comunicados_recebe_resposta = recebe_resposta
+                                            let mostrar_agenda: String = resultado!["mostrar_agenda"] as? String ?? ""
+                                            novoComunicado.comunicados_mostrar_agenda = mostrar_agenda
+                                            let data: String = resultado!["data"] as? String ?? ""
+                                            novoComunicado.comunicados_data = data
+                                            let criado_em: String = resultado!["criado_em"] as? String ?? ""
+                                            novoComunicado.comunicados_criado_em = criado_em
+                                            let comunicados_responsavel_id: String = resultado!["comunicados_responsavel_id"] as? String ?? ""
+                                            novoComunicado.comunicados_comunicados_responsavel_id = comunicados_responsavel_id
+                                            let colaborador_id: String = resultado!["colaborador_id"] as? String ?? ""
+                                            novoComunicado.comunicados_colaborador_id = colaborador_id
+                                            let attach: String = resultado!["attach"] as? String ?? ""
+                                            novoComunicado.comunicados_attach = attach
+                                            
+                                            novoComunicado.commit()
+                                            let tudo : NSArray = NSArray(objects: id, titulo, tipo_id, texto, situacao, recebe_resposta, mostrar_agenda, data, criado_em, comunicados_responsavel_id, colaborador_id, attach)
+                                            comunicados.add(tudo)
+                                        }
                                         
-                                        let tudo : NSArray = NSArray(objects: id, titulo, tipo_id, texto, situacao, recebe_resposta, mostrar_agenda, data, criado_em, comunicados_responsavel_id, colaborador_id, attach)
-                                        comunicados.add(tudo)
                                     }
                                 }
                             }
@@ -139,6 +191,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         let comunicado = comunicadosObject.object(at: indexPath.row) as! NSArray
         
         ComunicadoINTERNOcomAnexoViewController.id = Int(comunicado.object(at: 0) as! String)!
+        idComunicado = Int(comunicado.object(at: 0) as! String)!
         let anexo = comunicado.object(at: 12) as? String ?? ""
         if anexo != "" {
             performSegue(withIdentifier: "segueComAnexo", sender: self)

@@ -11,9 +11,10 @@ import UserNotifications
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
+import SharkORM
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate, SRKDelegate {
 
     var window: UIWindow?
     var segue: UIViewController!
@@ -22,11 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var idUsuario: String = String()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        SharkORM.setDelegate(self)
+        SharkORM.openDatabaseNamed("MyDatabase")
 
         UINavigationBar.appearance().barTintColor = UIColor(red:0.00000, green:0.28235, blue:0.70588, alpha:1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
-        
         
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
