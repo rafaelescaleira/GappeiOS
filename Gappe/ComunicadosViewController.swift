@@ -76,6 +76,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         let session = URLSession(configuration: configuration)
         
         if let idUser = UserDefaults.standard.object(forKey: "id_user") as? String {
+            print(idUser)
             let UrlApiComunicados = "\(database.getURLBase())/api/comunicados/meus_comunicados/\(idUser)/0"
             
             if let url = NSURL(string: UrlApiComunicados) {

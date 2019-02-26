@@ -12,6 +12,7 @@ class MessagesCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var viewMessage: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

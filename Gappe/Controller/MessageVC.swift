@@ -86,9 +86,11 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             cell.label.text = UserDefaults.standard.object(forKey: "nome") as? String
             cell.message.textAlignment = NSTextAlignment.right
             cell.label.textAlignment = NSTextAlignment.right
+            cell.viewMessage.backgroundColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 0.2006902825)
         } else {
             cell.message.textAlignment = NSTextAlignment.left
             cell.label.textAlignment = NSTextAlignment.left
+            cell.viewMessage.backgroundColor = #colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         }
         return cell
     }
