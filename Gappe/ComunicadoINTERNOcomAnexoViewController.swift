@@ -7,44 +7,64 @@
 //
 
 import UIKit
+import SafariServices
 
 class ComunicadoINTERNOcomAnexoViewController: UIViewController {
     
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var texto: UILabel!
     @IBOutlet weak var linkAnexo: UIButton!
-
+    @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var answerPresentation: UILabel!
+    @IBOutlet weak var answerHeight: NSLayoutConstraint!
+    @IBOutlet weak var noHeight: NSLayoutConstraint!
+    @IBOutlet weak var yesHeight: NSLayoutConstraint!
     
-    static var id: Int = Int()
-    var comunicadosDados:NSMutableArray = NSMutableArray()
     var comunicadoSelecionado = ComunicadosDatabase()
+    var urlAttach = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        linkAnexo.layer.cornerRadius = 12
+        linkAnexo.layer.cornerRadius = 15
         
-        let database = DatabaseModel()
-        comunicadosDados = database.selectComunicadoByID(idParam: ComunicadoINTERNOcomAnexoViewController.id)
+        self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
         
-        if comunicadosDados.count > 0 {
-
-            let dadoArray = comunicadosDados.object(at: 0) as! NSArray
-            self.titulo.text = dadoArray.object(at: 1) as? String
-            self.texto.text = dadoArray.object(at: 2) as? String
+        self.titulo.text = self.comunicadoSelecionado.comunicados_titulo
+        self.texto.text = self.comunicadoSelecionado.comunicados_texto
+        self.urlAttach = self.comunicadoSelecionado.comunicados_attach!
+        
+        if comunicadoSelecionado.comunicados_recebe_resposta == "0" {
+            yesButton.alpha = 0
+            noButton.alpha = 0
+            noHeight.constant = 0
+            yesHeight.constant = 0
+            answerHeight.constant = 0
+        }
             
-            if comunicadoSelecionado.comunicados_recebe_resposta == "0" {
+        else {
+            
+            if comunicadoSelecionado.comunicados_resposta == 0 {
+                
+                answerPresentation.text = "RESPOSTA NÃO"
+                answerPresentation.backgroundColor = #colorLiteral(red: 1, green: 0.3098039216, blue: 0.2666666667, alpha: 1)
                 yesButton.alpha = 0
                 noButton.alpha = 0
+                answerPresentation.alpha = 1
+            }
+                
+            else if comunicadoSelecionado.comunicados_resposta == 1 {
+                
+                answerPresentation.text = "RESPOSTA SIM"
+                answerPresentation.backgroundColor = #colorLiteral(red: 0.2501441892, green: 0.397867907, blue: 1, alpha: 1)
+                yesButton.alpha = 0
+                noButton.alpha = 0
+                answerPresentation.alpha = 1
             }
         }
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -54,8 +74,69 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
 
 extension ComunicadoINTERNOcomAnexoViewController {
     
-    @IBAction func yesButtonPressed(_ sender: Any) {
+    @IBAction func seeAttachButtonPressed(_ sender: Any) {
+        
+        guard let url = URL(string: self.urlAttach) else { return }
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
     }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "Back", sender: nil)
+    }
+    
+    @IBAction func yesButtonPressed(_ sender: Any) {
+        
+        SynchronizationModel.instance.requestCommunicateAnswer(comunicadoSelecionado: self.comunicadoSelecionado, parameters: SynchronizationModel.instance.getParametersCommunicatedAnswer(resposta: 1, idCommunicated: (self.comunicadoSelecionado.comunicados_comunicados_responsavel_id! as NSString).integerValue)) { (success, title, message) in
+            
+            if success {
+                
+                self.comunicadoSelecionado.comunicados_resposta = 1
+                self.comunicadoSelecionado.commit()
+                
+                self.answerPresentation.text = "RESPOSTA SIM"
+                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.2501441892, green: 0.397867907, blue: 1, alpha: 1)
+                
+                UIView.animate(withDuration: 0.4, animations: {
+                    
+                    self.yesButton.alpha = 0
+                    self.noButton.alpha = 0
+                    self.answerPresentation.alpha = 1
+                })
+            }
+                
+            else {
+                
+                self.present(AlertModel.instance.setAlert(title: title, message: message, titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func noButtonPressed(_ sender: Any) {
+        
+        SynchronizationModel.instance.requestCommunicateAnswer(comunicadoSelecionado: self.comunicadoSelecionado, parameters: SynchronizationModel.instance.getParametersCommunicatedAnswer(resposta: 0, idCommunicated: (self.comunicadoSelecionado.comunicados_comunicados_responsavel_id! as NSString).integerValue)) { (success, title, message) in
+            
+            if success {
+                
+                self.comunicadoSelecionado.comunicados_resposta = 0
+                self.comunicadoSelecionado.commit()
+                
+                self.answerPresentation.text = "RESPOSTA NÃO"
+                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.9994894862, green: 0.2715682685, blue: 0.2274804413, alpha: 1)
+                
+                UIView.animate(withDuration: 0.4, animations: {
+                    
+                    self.yesButton.alpha = 0
+                    self.noButton.alpha = 0
+                    self.answerPresentation.alpha = 1
+                })
+            }
+                
+            else {
+                
+                self.present(AlertModel.instance.setAlert(title: title, message: message, titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
+            }
+        }
     }
 }

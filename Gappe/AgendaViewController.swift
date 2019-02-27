@@ -104,7 +104,7 @@ class AgendaViewController: UIViewController, FSCalendarDataSource, FSCalendarDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let comunicado = agendaObject.object(at: indexPath.row) as! NSArray
         
-        ComunicadoINTERNOcomAnexoViewController.id = Int(comunicado.object(at: 0) as! String)!
+        //ComunicadoINTERNOcomAnexoViewController.id = Int(comunicado.object(at: 0) as! String)!
         let anexo = comunicado.object(at: 12) as? String ?? ""
         if anexo != "" {
             performSegue(withIdentifier: "segueAgendaComAnexo", sender: self)

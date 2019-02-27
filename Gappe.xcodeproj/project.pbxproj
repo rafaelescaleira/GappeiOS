@@ -162,7 +162,6 @@
 		054DCB09207FCAC800C3C446 /* UIFont+N1Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DCA64207FCAC800C3C446 /* UIFont+N1Fonts.swift */; };
 		05528266209A46F0005AAEBF /* ForcarTrocarSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05528265209A46F0005AAEBF /* ForcarTrocarSenhaViewController.swift */; };
 		05564872205AF9E300EFA418 /* EdicaoPerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05564871205AF9E300EFA418 /* EdicaoPerfilViewController.swift */; };
-		05715DFA2058153A003B8793 /* AnexoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715DF92058153A003B8793 /* AnexoWebViewController.swift */; };
 		058D188420595453007AE725 /* TelaLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D188320595453007AE725 /* TelaLoginViewController.swift */; };
 		059056942046F25A006B2E87 /* MenuComunicadosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059056932046F25A006B2E87 /* MenuComunicadosCell.swift */; };
 		059056972046F28E006B2E87 /* MenuAgendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059056962046F28E006B2E87 /* MenuAgendaCell.swift */; };
@@ -176,8 +175,6 @@
 		05908AA2204895EB0013B76C /* OGAPPEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05908AA1204895EB0013B76C /* OGAPPEViewController.swift */; };
 		05A32A07204F0B44004F31C3 /* ComunicadoINTERNOcomAnexoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32A06204F0B44004F31C3 /* ComunicadoINTERNOcomAnexoViewController.swift */; };
 		05A32A09204F0B59004F31C3 /* ComunicadoINTERNOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32A08204F0B59004F31C3 /* ComunicadoINTERNOViewController.swift */; };
-		05AC7E3F204D7A9A00152C15 /* ComunicadoCELL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC7E3E204D7A9A00152C15 /* ComunicadoCELL.swift */; };
-		05B9FABE2087BE06003327D9 /* ComunicadosPesquisaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9FABD2087BE06003327D9 /* ComunicadosPesquisaTableViewController.swift */; };
 		05B9FAC02087CD67003327D9 /* ComunicadoPesquisaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9FABF2087CD67003327D9 /* ComunicadoPesquisaCell.swift */; };
 		05F355D5206ABB12008AA4F7 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355B4206ABB12008AA4F7 /* FSCalendar+Deprecated.m */; };
 		05F355D6206ABB12008AA4F7 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355B6206ABB12008AA4F7 /* FSCalendar.m */; };
@@ -196,8 +193,19 @@
 		05F355E3206ABB12008AA4F7 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355D1206ABB12008AA4F7 /* FSCalendarTransitionCoordinator.m */; };
 		05F355E4206ABB12008AA4F7 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355D3206ABB12008AA4F7 /* FSCalendarWeekdayView.m */; };
 		05F355E7206AC62A008AA4F7 /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F355E6206AC62A008AA4F7 /* AgendaViewController.swift */; };
+		4C1126152225E08E00AAD364 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1126142225E08E00AAD364 /* GoogleService-Info.plist */; };
+		4C1126192225EF5300AAD364 /* SynchronizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126182225EF5300AAD364 /* SynchronizationModel.swift */; };
+		4C11261C2225F2BA00AAD364 /* DatabaseSharkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11261B2225F2BA00AAD364 /* DatabaseSharkModel.swift */; };
+		4C1126202225F7A900AAD364 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11261F2225F7A900AAD364 /* AlertModel.swift */; };
+		4C1126232225F85600AAD364 /* CommunicatedDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */; };
+		4C1126262225FB6A00AAD364 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126252225FB6A00AAD364 /* NetworkManager.swift */; };
+		4C11262E22260F0500AAD364 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11262A22260F0500AAD364 /* CustomNavigationView.swift */; };
+		4CFE2D2422262CD500EF91A1 /* SwipingController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D1F22262CD300EF91A1 /* SwipingController+UICollectionView.swift */; };
+		4CFE2D2522262CD500EF91A1 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D2022262CD400EF91A1 /* SwipingController.swift */; };
+		4CFE2D2622262CD500EF91A1 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D2122262CD400EF91A1 /* Page.swift */; };
+		4CFE2D2722262CD500EF91A1 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D2222262CD400EF91A1 /* PageCell.swift */; };
+		4CFE2D2822262CD500EF91A1 /* SwipingController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D2322262CD500EF91A1 /* SwipingController+extension.swift */; };
 		AE25FE4F20C85D2700BC2C3A /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25FE4E20C85D2700BC2C3A /* MessagesCell.swift */; };
-		AEAD171F214AEA1800AA0F2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEAD171E214AEA1800AA0F2F /* GoogleService-Info.plist */; };
 		AEB114FB20C702A800B0E183 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB114FA20C702A800B0E183 /* MessageVC.swift */; };
 		AEE0C32E21133D0E0018B88F /* icone_SOL.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE0C32D21133D000018B88F /* icone_SOL.png */; };
 		AEE0C33021133EA30018B88F /* logo_completa.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE0C32F21133E960018B88F /* logo_completa.png */; };
@@ -377,7 +385,6 @@
 		054DCA64207FCAC800C3C446 /* UIFont+N1Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+N1Fonts.swift"; sourceTree = "<group>"; };
 		05528265209A46F0005AAEBF /* ForcarTrocarSenhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForcarTrocarSenhaViewController.swift; sourceTree = "<group>"; };
 		05564871205AF9E300EFA418 /* EdicaoPerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdicaoPerfilViewController.swift; sourceTree = "<group>"; };
-		05715DF92058153A003B8793 /* AnexoWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnexoWebViewController.swift; sourceTree = "<group>"; };
 		058D188320595453007AE725 /* TelaLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelaLoginViewController.swift; sourceTree = "<group>"; };
 		059056932046F25A006B2E87 /* MenuComunicadosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuComunicadosCell.swift; sourceTree = "<group>"; };
 		059056962046F28E006B2E87 /* MenuAgendaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuAgendaCell.swift; sourceTree = "<group>"; };
@@ -391,8 +398,6 @@
 		05908AA1204895EB0013B76C /* OGAPPEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OGAPPEViewController.swift; sourceTree = "<group>"; };
 		05A32A06204F0B44004F31C3 /* ComunicadoINTERNOcomAnexoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoINTERNOcomAnexoViewController.swift; sourceTree = "<group>"; };
 		05A32A08204F0B59004F31C3 /* ComunicadoINTERNOViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoINTERNOViewController.swift; sourceTree = "<group>"; };
-		05AC7E3E204D7A9A00152C15 /* ComunicadoCELL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoCELL.swift; sourceTree = "<group>"; };
-		05B9FABD2087BE06003327D9 /* ComunicadosPesquisaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadosPesquisaTableViewController.swift; sourceTree = "<group>"; };
 		05B9FABF2087CD67003327D9 /* ComunicadoPesquisaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoPesquisaCell.swift; sourceTree = "<group>"; };
 		05F355B4206ABB12008AA4F7 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
 		05F355B5206ABB12008AA4F7 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
@@ -429,10 +434,21 @@
 		05F355D4206ABB12008AA4F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05F355E6206AC62A008AA4F7 /* AgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
 		411481678C2813158B7CE8EC /* Pods_Gappe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gappe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1126142225E08E00AAD364 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/gappe-a34b697fa8481917278847989943f65b2d108bf2/Gappe/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C1126182225EF5300AAD364 /* SynchronizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationModel.swift; sourceTree = "<group>"; };
+		4C11261B2225F2BA00AAD364 /* DatabaseSharkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSharkModel.swift; sourceTree = "<group>"; };
+		4C11261F2225F7A900AAD364 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatedDatabase.swift; sourceTree = "<group>"; };
+		4C1126252225FB6A00AAD364 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4C11262A22260F0500AAD364 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		4CFE2D1F22262CD300EF91A1 /* SwipingController+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwipingController+UICollectionView.swift"; sourceTree = "<group>"; };
+		4CFE2D2022262CD400EF91A1 /* SwipingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
+		4CFE2D2122262CD400EF91A1 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		4CFE2D2222262CD400EF91A1 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		4CFE2D2322262CD500EF91A1 /* SwipingController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwipingController+extension.swift"; sourceTree = "<group>"; };
 		AE25FE4E20C85D2700BC2C3A /* MessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		AE97B631210F4962003E9263 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		AE97B632210F4962003E9263 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		AEAD171E214AEA1800AA0F2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEB114FA20C702A800B0E183 /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
 		AEE0C32D21133D000018B88F /* icone_SOL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_SOL.png; sourceTree = "<group>"; };
 		AEE0C32F21133E960018B88F /* logo_completa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_completa.png; sourceTree = "<group>"; };
@@ -488,8 +504,10 @@
 		0537B9822045D55D00A17427 /* Gappe */ = {
 			isa = PBXGroup;
 			children = (
+				4C11262722260EF600AAD364 /* Custom */,
+				4C11261D2225F79300AAD364 /* Model */,
+				4C1126162225EF2800AAD364 /* Data Source */,
 				AE74D8EA20C5DF2A006FA67A /* Controller */,
-				AE74D8E920C5DF24006FA67A /* View */,
 				0523ED2020926E5A003976E5 /* Gappe.entitlements */,
 				05F355B3206ABB12008AA4F7 /* FSCalendar */,
 				0537B9952045DA0A00A17427 /* SWRevealViewController */,
@@ -501,6 +519,7 @@
 				054DCA26207FCAC800C3C446 /* Images */,
 				054DCA61207FCAC800C3C446 /* Utilities */,
 				0537B9832045D55D00A17427 /* AppDelegate.swift */,
+				AE25FE4E20C85D2700BC2C3A /* MessagesCell.swift */,
 				058D188320595453007AE725 /* TelaLoginViewController.swift */,
 				054312EB2090D4C20009ECA9 /* RecuperarSenhaViewController.swift */,
 				05528265209A46F0005AAEBF /* ForcarTrocarSenhaViewController.swift */,
@@ -508,19 +527,15 @@
 				0537B98A2045D55D00A17427 /* Assets.xcassets */,
 				0537B98C2045D55D00A17427 /* LaunchScreen.storyboard */,
 				0537B9852045D55D00A17427 /* ComunicadosViewController.swift */,
-				05AC7E3E204D7A9A00152C15 /* ComunicadoCELL.swift */,
 				05A32A06204F0B44004F31C3 /* ComunicadoINTERNOcomAnexoViewController.swift */,
 				05A32A08204F0B59004F31C3 /* ComunicadoINTERNOViewController.swift */,
-				05B9FABD2087BE06003327D9 /* ComunicadosPesquisaTableViewController.swift */,
 				05B9FABF2087CD67003327D9 /* ComunicadoPesquisaCell.swift */,
-				AEAD171E214AEA1800AA0F2F /* GoogleService-Info.plist */,
-				05715DF92058153A003B8793 /* AnexoWebViewController.swift */,
 				052D15482056C7FD00202947 /* PerfilViewController.swift */,
 				05564871205AF9E300EFA418 /* EdicaoPerfilViewController.swift */,
 				05F355E6206AC62A008AA4F7 /* AgendaViewController.swift */,
 				054AD91F2050843E0013BD08 /* SobreViewController.swift */,
 				0537B98F2045D55D00A17427 /* Info.plist */,
-				AE25FE4E20C85D2700BC2C3A /* MessagesCell.swift */,
+				4C1126142225E08E00AAD364 /* GoogleService-Info.plist */,
 			);
 			path = Gappe;
 			sourceTree = "<group>";
@@ -815,6 +830,85 @@
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
+		4C1126162225EF2800AAD364 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				4C1126212225F83800AAD364 /* Database */,
+				4C11261A2225F2A900AAD364 /* Dao */,
+				4C1126172225EF3400AAD364 /* Remote */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		4C1126172225EF3400AAD364 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				4C1126182225EF5300AAD364 /* SynchronizationModel.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		4C11261A2225F2A900AAD364 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				4C11261B2225F2BA00AAD364 /* DatabaseSharkModel.swift */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		4C11261D2225F79300AAD364 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C1126242225FB6A00AAD364 /* Network */,
+				4C11261F2225F7A900AAD364 /* AlertModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C1126212225F83800AAD364 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		4C1126242225FB6A00AAD364 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4C1126252225FB6A00AAD364 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4C11262722260EF600AAD364 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4C11262822260F0500AAD364 /* View */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		4C11262822260F0500AAD364 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C11262A22260F0500AAD364 /* CustomNavigationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4CFE2D1C2226297800EF91A1 /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				4CFE2D2122262CD400EF91A1 /* Page.swift */,
+				4CFE2D2222262CD400EF91A1 /* PageCell.swift */,
+				4CFE2D2022262CD400EF91A1 /* SwipingController.swift */,
+				4CFE2D2322262CD500EF91A1 /* SwipingController+extension.swift */,
+				4CFE2D1F22262CD300EF91A1 /* SwipingController+UICollectionView.swift */,
+			);
+			path = "Home Screen";
+			sourceTree = "<group>";
+		};
 		986C7E74BB15BD3FA4558308 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,16 +918,10 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		AE74D8E920C5DF24006FA67A /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		AE74D8EA20C5DF2A006FA67A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4CFE2D1C2226297800EF91A1 /* Home Screen */,
 				AEB114FA20C702A800B0E183 /* MessageVC.swift */,
 			);
 			path = Controller;
@@ -978,7 +1066,6 @@
 				AEE0C33021133EA30018B88F /* logo_completa.png in Resources */,
 				054DCA71207FCAC800C3C446 /* loadBubble_0009_Layer-30@1x.png in Resources */,
 				054DCAAD207FCAC800C3C446 /* loadBubble_0030_Layer-9@2x.png in Resources */,
-				AEAD171F214AEA1800AA0F2F /* GoogleService-Info.plist in Resources */,
 				054DCABB207FCAC800C3C446 /* loadBubble_0005_Layer-34@3x.png in Resources */,
 				054DCAC5207FCAC800C3C446 /* loadBubble_0015_Layer-24@3x.png in Resources */,
 				054DCA7A207FCAC800C3C446 /* loadBubble_0018_Layer-21@1x.png in Resources */,
@@ -1054,6 +1141,7 @@
 				054DCA9F207FCAC800C3C446 /* loadBubble_0016_Layer-23@2x.png in Resources */,
 				054DCAB1207FCAC800C3C446 /* loadBubble_0034_Layer-5@2x.png in Resources */,
 				054DCA83207FCAC800C3C446 /* loadBubble_0027_Layer-12@1x.png in Resources */,
+				4C1126152225E08E00AAD364 /* GoogleService-Info.plist in Resources */,
 				054DCAB6207FCAC800C3C446 /* loadBubble_0000_Layer-39@3x.png in Resources */,
 				054DCAA2207FCAC800C3C446 /* loadBubble_0019_Layer-20@2x.png in Resources */,
 				054DCABA207FCAC800C3C446 /* loadBubble_0004_Layer-35@3x.png in Resources */,
@@ -1072,24 +1160,28 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Gappe/Pods-Gappe-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gappe/Pods-Gappe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SharkORM/SharkORM.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SharkORM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gappe/Pods-Gappe-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gappe/Pods-Gappe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EAFD209DF6B8793AE177F44E /* [CP] Check Pods Manifest.lock */ = {
@@ -1119,7 +1211,9 @@
 			files = (
 				0537B9862045D55D00A17427 /* ComunicadosViewController.swift in Sources */,
 				05F355E2206ABB12008AA4F7 /* FSCalendarStickyHeader.m in Sources */,
+				4CFE2D2522262CD500EF91A1 /* SwipingController.swift in Sources */,
 				05F355E7206AC62A008AA4F7 /* AgendaViewController.swift in Sources */,
+				4C11262E22260F0500AAD364 /* CustomNavigationView.swift in Sources */,
 				05F355D5206ABB12008AA4F7 /* FSCalendar+Deprecated.m in Sources */,
 				05F355D6206ABB12008AA4F7 /* FSCalendar.m in Sources */,
 				054AD915205059650013BD08 /* FMDatabase.m in Sources */,
@@ -1129,23 +1223,27 @@
 				05A32A07204F0B44004F31C3 /* ComunicadoINTERNOcomAnexoViewController.swift in Sources */,
 				05F355D9206ABB12008AA4F7 /* FSCalendarCell.m in Sources */,
 				05F355D8206ABB12008AA4F7 /* FSCalendarCalculator.m in Sources */,
+				4C1126262225FB6A00AAD364 /* NetworkManager.swift in Sources */,
 				059056942046F25A006B2E87 /* MenuComunicadosCell.swift in Sources */,
 				052D15492056C7FD00202947 /* PerfilViewController.swift in Sources */,
 				054AD917205059650013BD08 /* FMDatabasePool.m in Sources */,
 				0590569F2046F374006B2E87 /* MenuSobreCell.swift in Sources */,
 				059056A12046F38F006B2E87 /* MenuSairCell.swift in Sources */,
+				4CFE2D2722262CD500EF91A1 /* PageCell.swift in Sources */,
 				05F355D7206ABB12008AA4F7 /* FSCalendarAppearance.m in Sources */,
 				054DCB07207FCAC800C3C446 /* ModalAlertUtilities.swift in Sources */,
 				059056992046F2CA006B2E87 /* MenuMensagensCell.swift in Sources */,
 				05F355DE206ABB12008AA4F7 /* FSCalendarDelegationProxy.m in Sources */,
 				05908A9B204839520013B76C /* EscolaGAPPEViewController.swift in Sources */,
 				05B9FAC02087CD67003327D9 /* ComunicadoPesquisaCell.swift in Sources */,
-				05B9FABE2087BE06003327D9 /* ComunicadosPesquisaTableViewController.swift in Sources */,
+				4CFE2D2822262CD500EF91A1 /* SwipingController+extension.swift in Sources */,
 				059056972046F28E006B2E87 /* MenuAgendaCell.swift in Sources */,
 				05908AA2204895EB0013B76C /* OGAPPEViewController.swift in Sources */,
+				4C1126202225F7A900AAD364 /* AlertModel.swift in Sources */,
 				05F355DB206ABB12008AA4F7 /* FSCalendarCollectionViewLayout.m in Sources */,
 				054AD91E20505A810013BD08 /* DatabaseModel.swift in Sources */,
 				05F355DF206ABB12008AA4F7 /* FSCalendarExtensions.m in Sources */,
+				4CFE2D2622262CD500EF91A1 /* Page.swift in Sources */,
 				AE25FE4F20C85D2700BC2C3A /* MessagesCell.swift in Sources */,
 				050D6FDA206C1ABE00B5C16B /* TelaInicialPageViewController.swift in Sources */,
 				05F355DD206ABB12008AA4F7 /* FSCalendarDelegationFactory.m in Sources */,
@@ -1153,18 +1251,20 @@
 				0590569D2046F35A006B2E87 /* MenuEscolaCell.swift in Sources */,
 				054AD9202050843E0013BD08 /* SobreViewController.swift in Sources */,
 				0537B9842045D55D00A17427 /* AppDelegate.swift in Sources */,
-				05715DFA2058153A003B8793 /* AnexoWebViewController.swift in Sources */,
 				05F355DA206ABB12008AA4F7 /* FSCalendarCollectionView.m in Sources */,
 				054312EC2090D4C20009ECA9 /* RecuperarSenhaViewController.swift in Sources */,
+				4C11261C2225F2BA00AAD364 /* DatabaseSharkModel.swift in Sources */,
 				05A32A09204F0B59004F31C3 /* ComunicadoINTERNOViewController.swift in Sources */,
+				4C1126192225EF5300AAD364 /* SynchronizationModel.swift in Sources */,
 				AEB114FB20C702A800B0E183 /* MessageVC.swift in Sources */,
+				4C1126232225F85600AAD364 /* CommunicatedDatabase.swift in Sources */,
+				4CFE2D2422262CD500EF91A1 /* SwipingController+UICollectionView.swift in Sources */,
 				05F355E4206ABB12008AA4F7 /* FSCalendarWeekdayView.m in Sources */,
 				0537B9992045DA7700A17427 /* SWRevealViewController.m in Sources */,
 				0590569B2046F338006B2E87 /* MenuPerfilCell.swift in Sources */,
 				054DCB09207FCAC800C3C446 /* UIFont+N1Fonts.swift in Sources */,
 				05F355DC206ABB12008AA4F7 /* FSCalendarConstants.m in Sources */,
 				054AD919205059650013BD08 /* FMResultSet.m in Sources */,
-				05AC7E3F204D7A9A00152C15 /* ComunicadoCELL.swift in Sources */,
 				05908AA020484B530013B76C /* EscolaPAGEViewController.swift in Sources */,
 				054DCB08207FCAC800C3C446 /* UIColor+N1Colors.swift in Sources */,
 				05564872205AF9E300EFA418 /* EdicaoPerfilViewController.swift in Sources */,

@@ -15,6 +15,16 @@ class ForcarTrocarSenhaViewController: UIViewController {
     @IBOutlet weak var repetirSenha: UITextField!
     @IBOutlet weak var labelValidacao: UILabel!
     @IBOutlet weak var enviarBtn: UIButton!
+    @IBOutlet weak var backImage: UIImageView!
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "Back", sender: nil)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     @IBAction func enviar(_ sender: UIButton) {
         if senhaAntiga.text != "" && novaSenha.text != "" && repetirSenha.text != ""{
@@ -31,6 +41,7 @@ class ForcarTrocarSenhaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
         enviarBtn.layer.cornerRadius = 5
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TelaLoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)

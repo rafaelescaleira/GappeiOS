@@ -24,7 +24,7 @@ class TelaInicialPageViewController: UIPageViewController, UIPageViewControllerD
         
         self.dataSource = self
         if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+            setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
         }
         
         self.delegate = self

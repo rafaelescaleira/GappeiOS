@@ -17,11 +17,17 @@ class RecuperarSenhaViewController: UIViewController {
     @IBAction func enviarAction(_ sender: UIButton) {
         recuperarSenha()
     }
+    @IBOutlet weak var backImage: UIImageView!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "Back", sender: nil)
+    }
     let database = DatabaseModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
 
         enviarBtn.layer.cornerRadius = 5
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TelaLoginViewController.dismissKeyboard))
@@ -32,10 +38,9 @@ class RecuperarSenhaViewController: UIViewController {
         view.endEditing(true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-    
 
     func recuperarSenha()
     {
