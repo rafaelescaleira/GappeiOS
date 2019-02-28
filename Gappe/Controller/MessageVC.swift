@@ -12,22 +12,25 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableMessages: UITableView!
-    @IBOutlet weak var menuBtn: UIBarButtonItem!
-
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var reloadImage: UIImageView!
+    @IBOutlet weak var sendButton: UIButton!
+    
     let database = DatabaseModel()
     
     var messagesObject:NSMutableArray = NSMutableArray()
     var id_user:String = ""
     let activity_view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            menuBtn.target = self.revealViewController()
-            menuBtn.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+        
+        self.sendButton.setImage(UIImage.fontAwesomeIcon(name: .paperPlane, style: .solid, textColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), size: self.sendButton.bounds.size), for: .normal)
+        self.reloadImage.image = .fontAwesomeIcon(name: .syncAlt, style: .solid, textColor: .white, size: self.reloadImage.bounds.size)
+        
+        menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+        self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
         
         tableMessages.dataSource = self
         
@@ -38,7 +41,6 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         activity_view.color = UIColor(red:0.7, green:0.7, blue:0.7, alpha:1.0)
         activity_view.center = CGPoint(x: self.view.center.x, y: view.center.y)
         self.view.addSubview(activity_view)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loadList), name: NSNotification.Name(rawValue: "loadList"), object: nil)
         
         if messagesObject.count > 0 {
             scrollToBottom()
@@ -80,17 +82,29 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let message = messagesObject.object(at: indexPath.row) as! NSArray
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath) as! MessagesCell
         cell.message.text = message.object(at: 0) as? String
-        cell.label.text = "GAPPE"
+        cell.label.text = "Gappe"
 
         if message.object(at: 4) as? String == "" {
-            cell.label.text = UserDefaults.standard.object(forKey: "nome") as? String
+            
+            cell.label.text = (UserDefaults.standard.object(forKey: "nome") as? String)?.lowercased().capitalized
             cell.message.textAlignment = NSTextAlignment.right
             cell.label.textAlignment = NSTextAlignment.right
-            cell.viewMessage.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9647058824, blue: 1, alpha: 1)
-        } else {
+            
+            cell.label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            cell.message.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            
+            cell.viewMessage.backgroundColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 0.2)
+        }
+        
+        else {
+            
             cell.message.textAlignment = NSTextAlignment.left
             cell.label.textAlignment = NSTextAlignment.left
-            cell.viewMessage.backgroundColor = #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
+            
+            cell.label.textColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1)
+            cell.message.textColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1)
+            
+            cell.viewMessage.backgroundColor = #colorLiteral(red: 0.9987735152, green: 0.7140055299, blue: 0, alpha: 0.2)
         }
         return cell
     }
@@ -105,19 +119,8 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         DispatchQueue.main.async(execute: {
             self.tableMessages.reloadData()
+            self.scrollToBottom()
         })
-        scrollToBottom()
-    }
-    
-    @IBAction func loadList(){
-        self.messagesObject = database.selectMensagens()
-        print("MESSAGE VC")
-        print(database.lastMessage())
-        DispatchQueue.main.async(execute: {
-            self.tableMessages.reloadData()
-        })
-            scrollToBottom()
-    
     }
     
     @IBAction func send(sender: AnyObject) {
@@ -168,6 +171,9 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         messageField.resignFirstResponder()
@@ -176,7 +182,7 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true);
+        self.tableMessages.endEditing(true);
     }
     
     func scrollToBottom(){

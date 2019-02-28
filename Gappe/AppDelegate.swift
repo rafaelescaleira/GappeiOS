@@ -114,11 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                       
 
                         currentController.present(controller, animated: true, completion: nil)
-                        if myCustomViewController.revealViewController() != nil {
-                            myCustomViewController.menuBtn.target = myCustomViewController.revealViewController()
-                            myCustomViewController.menuBtn.action = #selector(SWRevealViewController.revealToggle(_:))
-                            myCustomViewController.view.addGestureRecognizer(myCustomViewController.revealViewController().panGestureRecognizer())
-                        }
                     }
                  
                 }

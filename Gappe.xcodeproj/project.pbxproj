@@ -504,7 +504,6 @@
 				05F355B3206ABB12008AA4F7 /* FSCalendar */,
 				0537B9952045DA0A00A17427 /* SWRevealViewController */,
 				054AD908205059650013BD08 /* FMDB2 */,
-				059056922046F231006B2E87 /* Menu */,
 				050D6FD6206C0FDC00B5C16B /* TelasIniciais */,
 				05908A9C204839670013B76C /* EscolaGAPPE */,
 				054DC9A9207FCAC800C3C446 /* Animated */,
@@ -762,6 +761,7 @@
 				0537B99A204603EF00A17427 /* MenuViewController.swift */,
 			);
 			name = Menu;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		05908A9C204839670013B76C /* EscolaGAPPE */ = {
@@ -924,6 +924,7 @@
 		AE74D8EA20C5DF2A006FA67A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				059056922046F231006B2E87 /* Menu */,
 				4CD31B7A22278B38003EA3A5 /* Schedule */,
 				4CFE2D1C2226297800EF91A1 /* Home Screen */,
 				AEB114FA20C702A800B0E183 /* MessageVC.swift */,

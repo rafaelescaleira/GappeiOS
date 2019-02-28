@@ -10,90 +10,49 @@ import UIKit
 import SharkORM
 import FontAwesome_swift
 
-class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var tableComunicados: UITableView!
+    @IBOutlet weak var reloadImage: UIImageView!
     
     let activity_view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    let searchController = UISearchController(searchResultsController: nil)
     private let refreshControl = UIRefreshControl()
     
     var communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+    var communicatedFind = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
     var communicatedID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.reloadImage.image = .fontAwesomeIcon(name: .syncAlt, style: .solid, textColor: .white, size: self.reloadImage.bounds.size)
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Título do comunicado"
+        definesPresentationContext = true
+        self.tableComunicados.tableHeaderView = searchController.searchBar
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.8859606385, green: 0.8895940185, blue: 0.926838696, alpha: 1)
+        
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
 
-        activity_view.frame =  CGRect(x: 0, y: 0, width: 20, height: 20)
-        activity_view.color = UIColor(red:0.7, green:0.7, blue:0.7, alpha:1.0)
+        activity_view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        activity_view.color = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
         activity_view.center = CGPoint(x: self.view.center.x, y: view.center.y)
         self.view.addSubview(activity_view)
         activity_view.startAnimating()
         
-        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = #colorLiteral(red: 1, green: 0.662745098, blue: 0.07843137255, alpha: 1)
-        refreshControl.attributedTitle = NSAttributedString(string: "Buscando Novo Comunicado")
-        self.tableComunicados.refreshControl = refreshControl
-        
         self.tableComunicados.reloadData()
     }
     
-    @objc func refresh(sender: AnyObject) {
+    @IBAction func refresh(sender: AnyObject) {
         
-        let logado: String = (UserDefaults.standard.object(forKey: "logado") as? String ?? "")!
-        
-        if logado != "yes" {
-            
-            self.refreshControl.endRefreshing()
-            performSegue(withIdentifier: "segueUsuarioNaoLogado", sender: self)
-        }
-            
-        else if logado == "yes" {
-            
-            NetworkManager.isReachable { _ in
-                
-                if let userID = UserDefaults.standard.object(forKey: "id_user") as? String {
-                    
-                    self.activity_view.stopAnimating()
-                    self.activity_view.hidesWhenStopped = true
-                    
-                    SynchronizationModel.instance.requestCommunicated(idUser: userID) { (success, title, message) in
-                        
-                        if success {
-                            
-                            self.communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
-                            self.tableComunicados.reloadData()
-                            self.activity_view.stopAnimating()
-                            self.activity_view.hidesWhenStopped = true
-                        }
-                        
-                        else {
-                            
-                            
-                            self.present(AlertModel.instance.setAlert(title: title, message: message, titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
-                        }
-                    }
-                    
-                    self.refreshControl.endRefreshing()
-                }
-            }
-            
-            NetworkManager.isUnreachable { _ in
-                
-                self.activity_view.stopAnimating()
-                self.activity_view.hidesWhenStopped = true
-                self.refreshControl.endRefreshing()
-                
-                if self.communicated.isEmpty {
-                    
-                    self.present(AlertModel.instance.setAlert(title: "Erro de Conexão", message: "Não é possível carregar os comunidados", titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
-                }
-            }
-        }
+        self.viewWillAppear(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +80,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                         if success {
                             
                             self.communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+                            self.communicatedFind = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
                             self.refreshControl.endRefreshing()
                             self.tableComunicados.reloadData()
                             self.activity_view.stopAnimating()
@@ -136,12 +96,27 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                 self.activity_view.hidesWhenStopped = true
                 self.refreshControl.endRefreshing()
                 
-                if self.communicated.isEmpty {
+                if self.communicatedFind.isEmpty {
                     
                     self.present(AlertModel.instance.setAlert(title: "Erro de Conexão", message: "Não é possível carregar os comunidados", titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
                 }
             }
         }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if searchController.searchBar.text! == "" {
+            
+            self.communicatedFind = self.communicated
+        }
+            
+        else {
+            
+            self.communicatedFind = self.communicated.filter { ($0.comunicados_titulo?.lowercased().contains(searchController.searchBar.text!.lowercased()))!}
+        }
+        
+        self.tableComunicados.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -161,14 +136,14 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.communicated.isEmpty == true ? 0 : self.communicated.count
+        return self.communicatedFind.isEmpty == true ? 0 : self.communicatedFind.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.communicatedID = communicated[indexPath.row].comunicados_id
+        self.communicatedID = communicatedFind[indexPath.row].comunicados_id
         
-        if self.communicated[indexPath.row].comunicados_attach != "" {
+        if self.communicatedFind[indexPath.row].comunicados_attach != "" {
             
             performSegue(withIdentifier: "segueComAnexo", sender: self)
         }
@@ -181,14 +156,14 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.communicated.isEmpty { return UITableViewCell() }
+        if self.communicatedFind.isEmpty { return UITableViewCell() }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommunicatedTableViewCell", for: indexPath) as? CommunicatedTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        cell.setCell(title: communicated[indexPath.row].comunicados_titulo, description: communicated[indexPath.row].comunicados_texto, date: communicated[indexPath.row].comunicados_data)
-        cell.attachmentImage.image = communicated[indexPath.row].comunicados_attach == "" ? UIImage() : UIImage(named: "ic_attach_file")!
+        cell.setCell(title: communicatedFind[indexPath.row].comunicados_titulo, description: communicatedFind[indexPath.row].comunicados_texto, date: communicatedFind[indexPath.row].comunicados_data)
+        cell.attachmentImage.image = communicatedFind[indexPath.row].comunicados_attach == "" ? UIImage() : UIImage(named: "ic_attach_file")!
         
-        switch (communicated[indexPath.row].comunicados_tipo_id) {
+        switch (communicatedFind[indexPath.row].comunicados_tipo_id) {
             
         case "1":
             cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoice, style: .solid, textColor: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), size: cell.iconImage.bounds.size)
