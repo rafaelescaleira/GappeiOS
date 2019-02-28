@@ -17,6 +17,8 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editHeight: NSLayoutConstraint!
     @IBOutlet weak var answerPresentation: UILabel!
     @IBOutlet weak var answerHeight: NSLayoutConstraint!
     @IBOutlet weak var noHeight: NSLayoutConstraint!
@@ -31,17 +33,23 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
         linkAnexo.layer.cornerRadius = 15
         
         self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
+        self.editButton.setImage(.fontAwesomeIcon(name: .penSquare, style: .solid, textColor: .white, size: self.editButton.bounds.size), for: .normal)
         
         self.titulo.text = self.comunicadoSelecionado.comunicados_titulo
         self.texto.text = self.comunicadoSelecionado.comunicados_texto
         self.urlAttach = self.comunicadoSelecionado.comunicados_attach!
         
         if comunicadoSelecionado.comunicados_recebe_resposta == "0" {
+            
             yesButton.alpha = 0
             noButton.alpha = 0
+            answerPresentation.alpha = 0
+            editButton.alpha = 0
+            
             noHeight.constant = 0
             yesHeight.constant = 0
             answerHeight.constant = 0
+            editHeight.constant = 0
         }
             
         else {
@@ -53,6 +61,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
                 yesButton.alpha = 0
                 noButton.alpha = 0
                 answerPresentation.alpha = 1
+                editButton.alpha = 1
             }
                 
             else if comunicadoSelecionado.comunicados_resposta == 1 {
@@ -62,6 +71,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
                 yesButton.alpha = 0
                 noButton.alpha = 0
                 answerPresentation.alpha = 1
+                editButton.alpha = 1
             }
         }
         
@@ -73,6 +83,17 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
 /* Actions */
 
 extension ComunicadoINTERNOcomAnexoViewController {
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            
+            self.yesButton.alpha = 1
+            self.noButton.alpha = 1
+            self.answerPresentation.alpha = 0
+            self.editButton.alpha = 0
+        })
+    }
     
     @IBAction func seeAttachButtonPressed(_ sender: Any) {
         
@@ -103,6 +124,7 @@ extension ComunicadoINTERNOcomAnexoViewController {
                     self.yesButton.alpha = 0
                     self.noButton.alpha = 0
                     self.answerPresentation.alpha = 1
+                    self.editButton.alpha = 1
                 })
             }
                 
@@ -123,13 +145,14 @@ extension ComunicadoINTERNOcomAnexoViewController {
                 self.comunicadoSelecionado.commit()
                 
                 self.answerPresentation.text = "RESPOSTA NÃO"
-                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.8156862745, green: 0.1215686275, blue: 0.007843137255, alpha: 1)
                 
                 UIView.animate(withDuration: 0.4, animations: {
                     
                     self.yesButton.alpha = 0
                     self.noButton.alpha = 0
                     self.answerPresentation.alpha = 1
+                    self.editButton.alpha = 1
                 })
             }
                 

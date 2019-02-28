@@ -17,9 +17,9 @@ class SynchronizationModel {
     static let instance = SynchronizationModel()
     
     
-    func getParametersCommunicatedAnswer(resposta: Int, idCommunicated: Int) -> [String: Any] {
+    func getParametersCommunicatedAnswer(resposta: Int, idCommunicated: Int) -> String {
         
-        let parameter: [String: Any] = ["comunicados_responsavel_id": idCommunicated, "resposta": resposta]
+        let parameter = "comunicados_responsavel_id=\(idCommunicated)&resposta=\(resposta)"
         
         return parameter
     }
@@ -49,19 +49,18 @@ class SynchronizationModel {
         return (true, dataResult, "", "")
     }
     
-    func requestCommunicateAnswer(comunicadoSelecionado: ComunicadosDatabase, parameters: [String: Any], completion: @escaping (Bool, String, String) -> ()) {
+    func requestCommunicateAnswer(comunicadoSelecionado: ComunicadosDatabase, parameters: String, completion: @escaping (Bool, String, String) -> ()) {
         
         let url = URL(string: LINK_COMMUNICATED_ANSWER)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
+        
+        print(url)
         print(parameters)
+        
         request.httpMethod = "POST"
-        
-        do { request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) }
-        catch let error { print(error.localizedDescription) }
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = parameters.data(using: String.Encoding.utf8)
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             

@@ -10,11 +10,21 @@ import UIKit
 import SharkORM
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var nome: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var imagemPerfil: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     let database = DatabaseModel()
+    let menuTitles = ["Comunicados", "Agenda Gappe", "Mensagens", "Meu Perfil", "Escola Gappe", "Sobre", "Sair"]
+    let menuTitleImages: [UIImage] = [UIImage.fontAwesomeIcon(name: .bell, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
+    UIImage.fontAwesomeIcon(name: .calendarAlt, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
+    UIImage.fontAwesomeIcon(name: .comments, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
+    UIImage.fontAwesomeIcon(name: .user, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
+    UIImage.fontAwesomeIcon(name: .school, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
+    UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
+    UIImage.fontAwesomeIcon(name: .powerOff, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25))]
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -22,6 +32,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.revealViewController()?.rearViewRevealWidth = 291.66
+        self.revealViewController()?.rearViewRevealOverdraw = 0
         
         imagemPerfil.layer.cornerRadius = imagemPerfil.frame.size.height/2
         imagemPerfil.clipsToBounds = true
@@ -31,26 +44,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         if let imgData = UserDefaults.standard.object(forKey: "myImageKey") as? NSData {
             let retrievedImg = UIImage(data: imgData as Data)
+            
             imagemPerfil.image = retrievedImg
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning() 
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        
+        return self.menuTitles.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.row == 6 {
+            
             UserDefaults.standard.removeObject(forKey: "logado")
             UserDefaults.standard.removeObject(forKey: "id_user")
             UserDefaults.standard.removeObject(forKey: "device_token")
@@ -61,39 +71,41 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             UserDefaults.standard.synchronize()
             
             SharkORM.rawQuery("DELETE FROM ComunicadosDatabase")
-            
             database.deletaBanco()
         }
+        
+        self.performSegue(withIdentifier: self.menuTitles[indexPath.row], sender: nil)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuComunicados", for: indexPath) as! MenuComunicadosCell
-            return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuAgenda", for: indexPath) as! MenuAgendaCell
-            return cell
-        } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuMensagens", for: indexPath) as! MenuMensagensCell
-            return cell
-        } else if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuPerfil", for: indexPath) as! MenuPerfilCell
-            return cell
-        } else if indexPath.row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuEscola", for: indexPath) as! MenuEscolaCell
-            return cell
-        }else if indexPath.row == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuSobre", for: indexPath) as! MenuSobreCell
-            return cell
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuSair", for: indexPath) as! MenuSairCell
-            return cell
-        }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell else { return UITableViewCell() }
+        cell.setCell(title: self.menuTitles[indexPath.row], image: self.menuTitleImages[indexPath.row])
+        cell.selectionStyle = .none
+        return cell
     }
 
 }
 
-
+class MenuTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    func setCell(title: String?, image: UIImage) {
+        
+        self.title.text = title
+        self.iconImage.image = image
+    }
+}
 
 
 

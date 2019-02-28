@@ -14,6 +14,8 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dataClick: UILabel!
+    @IBOutlet weak var viewNaoEncontrado: UIView!
     
     var communicatedID = 0
     var agendaComunicados = [ComunicadosDatabase]()
@@ -28,7 +30,6 @@ class ScheduleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
@@ -39,6 +40,23 @@ class ScheduleViewController: UIViewController {
         calendar.backgroundColor = .clear
         calendar.locale = Locale(identifier: "Pt_BR")
         calendar.appearance.headerTitleFont = UIFont(name: "Avenir-Black", size: 22)!
+        calendar.select(Date())
+        
+        self.dataSelecionada = self.dateFormatter.string(from: calendar.selectedDate!)
+        self.dataClick.text = self.dateFormatter.string(from: calendar.selectedDate!)
+        
+        if self.datasComunicados.contains(dataSelecionada) {
+            
+            self.agendaComunicados = ComunicadosDatabase.query().where("comunicados_data = '\(dataSelecionada)'").fetch() as? [ComunicadosDatabase] ?? []
+        }
+            
+        else {
+            
+            self.agendaComunicados = []
+            self.calendar.appearance.selectionColor = #colorLiteral(red: 0.2352941176, green: 1, blue: 0.3333333333, alpha: 1)
+        }
+        
+        self.tableView.reloadData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -73,6 +91,7 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         dataSelecionada = self.dateFormatter.string(from: date)
+        self.dataClick.text = dataSelecionada
         
         if self.datasComunicados.contains(dataSelecionada) {
             
@@ -82,8 +101,8 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
         else {
             
             self.agendaComunicados = []
+            self.calendar.appearance.selectionColor = #colorLiteral(red: 0.2352941176, green: 1, blue: 0.3333333333, alpha: 1)
         }
-        
         
         self.tableView.reloadData()
     }
@@ -119,7 +138,17 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.agendaComunicados.isEmpty == true ? 0 : self.agendaComunicados.count
+        if self.agendaComunicados.isEmpty {
+            
+            self.viewNaoEncontrado.alpha = 1
+            return 0
+        }
+        
+        else {
+            
+            self.viewNaoEncontrado.alpha = 0
+            return self.agendaComunicados.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -134,18 +163,15 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
             
         case "1":
             cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoice, style: .solid, textColor: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), size: cell.iconImage.bounds.size)
-            cell.viewPresent.layer.shadowColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-            self.calendar.appearance.selectionColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            cell.viewPresent.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.1)
             break;
         case "2":
             cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoiceDollar, style: .solid, textColor: #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1), size: cell.iconImage.bounds.size)
-            cell.viewPresent.layer.shadowColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-            self.calendar.appearance.selectionColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+            cell.viewPresent.backgroundColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 0.1)
             break;
         case "3":
             cell.iconImage.image = .fontAwesomeIcon(name: .graduationCap, style: .solid, textColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), size: cell.iconImage.bounds.size)
-            cell.viewPresent.layer.shadowColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1)
-            self.calendar.appearance.selectionColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1)
+            cell.viewPresent.backgroundColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 0.1)
             break;
         default:
             break
@@ -182,11 +208,6 @@ class AgendaComunicadoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.viewPresent.layer.shadowRadius = 4.5
-        self.viewPresent.layer.shadowOpacity = 0.5
-        self.viewPresent.layer.shadowOffset = .zero
-        self.viewPresent.layer.masksToBounds = false
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

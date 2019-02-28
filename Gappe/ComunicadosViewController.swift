@@ -37,7 +37,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.662745098, blue: 0.07843137255, alpha: 1)
         refreshControl.attributedTitle = NSAttributedString(string: "Buscando Novo Comunicado")
-        self.tableComunicados.addSubview(refreshControl)
+        self.tableComunicados.refreshControl = refreshControl
         
         self.tableComunicados.reloadData()
     }
@@ -192,15 +192,15 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
             
         case "1":
             cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoice, style: .solid, textColor: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), size: cell.iconImage.bounds.size)
-            cell.viewPresent.layer.shadowColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            cell.viewPresent.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.1)
             break;
         case "2":
             cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoiceDollar, style: .solid, textColor: #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1), size: cell.iconImage.bounds.size)
-            cell.viewPresent.layer.shadowColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+            cell.viewPresent.backgroundColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 0.1)
             break;
         case "3":
             cell.iconImage.image = .fontAwesomeIcon(name: .graduationCap, style: .solid, textColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), size: cell.iconImage.bounds.size)
-            cell.viewPresent.layer.shadowColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1)
+            cell.viewPresent.backgroundColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 0.1)
             break;
         default:
             break
@@ -222,14 +222,11 @@ class CommunicatedTableViewCell: UITableViewCell {
     @IBOutlet weak var attachmentImage: UIImageView!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var viewPresent: UIView!
+    @IBOutlet weak var calendarImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.viewPresent.layer.shadowRadius = 4.5
-        self.viewPresent.layer.shadowOpacity = 0.5
-        self.viewPresent.layer.shadowOffset = .zero
-        self.viewPresent.layer.masksToBounds = false
+        self.calendarImage.image = .fontAwesomeIcon(name: .calendarAlt, style: .regular, textColor: .darkGray, size: self.calendarImage.bounds.size)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

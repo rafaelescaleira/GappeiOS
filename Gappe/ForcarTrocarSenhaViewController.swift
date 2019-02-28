@@ -42,7 +42,6 @@ class ForcarTrocarSenhaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
-        enviarBtn.layer.cornerRadius = 5
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TelaLoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
