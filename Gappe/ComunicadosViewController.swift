@@ -11,15 +11,19 @@ import SharkORM
 import FontAwesome_swift
 
 class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var tableComunicados: UITableView!
     
-    var communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
     let activity_view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    private let refreshControl = UIRefreshControl()
+    
+    var communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
     var communicatedID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
@@ -30,16 +34,21 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         self.view.addSubview(activity_view)
         activity_view.startAnimating()
         
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = #colorLiteral(red: 1, green: 0.662745098, blue: 0.07843137255, alpha: 1)
+        refreshControl.attributedTitle = NSAttributedString(string: "Buscando Novo Comunicado")
+        self.tableComunicados.addSubview(refreshControl)
+        
         self.tableComunicados.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    @objc func refresh(sender: AnyObject) {
         
         let logado: String = (UserDefaults.standard.object(forKey: "logado") as? String ?? "")!
         
         if logado != "yes" {
             
+            self.refreshControl.endRefreshing()
             performSegue(withIdentifier: "segueUsuarioNaoLogado", sender: self)
         }
             
@@ -61,6 +70,62 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                             self.activity_view.stopAnimating()
                             self.activity_view.hidesWhenStopped = true
                         }
+                        
+                        else {
+                            
+                            
+                            self.present(AlertModel.instance.setAlert(title: title, message: message, titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
+                        }
+                    }
+                    
+                    self.refreshControl.endRefreshing()
+                }
+            }
+            
+            NetworkManager.isUnreachable { _ in
+                
+                self.activity_view.stopAnimating()
+                self.activity_view.hidesWhenStopped = true
+                self.refreshControl.endRefreshing()
+                
+                if self.communicated.isEmpty {
+                    
+                    self.present(AlertModel.instance.setAlert(title: "Erro de Conexão", message: "Não é possível carregar os comunidados", titleColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), style: .alert), animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let logado: String = (UserDefaults.standard.object(forKey: "logado") as? String ?? "")!
+        
+        if logado != "yes" {
+            
+            self.refreshControl.endRefreshing()
+            performSegue(withIdentifier: "segueUsuarioNaoLogado", sender: self)
+        }
+            
+        else if logado == "yes" {
+            
+            NetworkManager.isReachable { _ in
+                
+                if let userID = UserDefaults.standard.object(forKey: "id_user") as? String {
+                    
+                    self.activity_view.stopAnimating()
+                    self.activity_view.hidesWhenStopped = true
+                    
+                    SynchronizationModel.instance.requestCommunicated(idUser: userID) { (success, title, message) in
+                        
+                        if success {
+                            
+                            self.communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+                            self.refreshControl.endRefreshing()
+                            self.tableComunicados.reloadData()
+                            self.activity_view.stopAnimating()
+                            self.activity_view.hidesWhenStopped = true
+                        }
                     }
                 }
             }
@@ -69,6 +134,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 self.activity_view.stopAnimating()
                 self.activity_view.hidesWhenStopped = true
+                self.refreshControl.endRefreshing()
                 
                 if self.communicated.isEmpty {
                     
@@ -118,7 +184,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         if self.communicated.isEmpty { return UITableViewCell() }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommunicatedTableViewCell", for: indexPath) as? CommunicatedTableViewCell else { return UITableViewCell() }
-        
+        cell.selectionStyle = .none
         cell.setCell(title: communicated[indexPath.row].comunicados_titulo, description: communicated[indexPath.row].comunicados_texto, date: communicated[indexPath.row].comunicados_data)
         cell.attachmentImage.image = communicated[indexPath.row].comunicados_attach == "" ? UIImage() : UIImage(named: "ic_attach_file")!
         

@@ -192,7 +192,6 @@
 		05F355E2206ABB12008AA4F7 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355CF206ABB12008AA4F7 /* FSCalendarStickyHeader.m */; };
 		05F355E3206ABB12008AA4F7 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355D1206ABB12008AA4F7 /* FSCalendarTransitionCoordinator.m */; };
 		05F355E4206ABB12008AA4F7 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F355D3206ABB12008AA4F7 /* FSCalendarWeekdayView.m */; };
-		05F355E7206AC62A008AA4F7 /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F355E6206AC62A008AA4F7 /* AgendaViewController.swift */; };
 		4C1126152225E08E00AAD364 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1126142225E08E00AAD364 /* GoogleService-Info.plist */; };
 		4C1126192225EF5300AAD364 /* SynchronizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126182225EF5300AAD364 /* SynchronizationModel.swift */; };
 		4C11261C2225F2BA00AAD364 /* DatabaseSharkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11261B2225F2BA00AAD364 /* DatabaseSharkModel.swift */; };
@@ -200,6 +199,10 @@
 		4C1126232225F85600AAD364 /* CommunicatedDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */; };
 		4C1126262225FB6A00AAD364 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126252225FB6A00AAD364 /* NetworkManager.swift */; };
 		4C11262E22260F0500AAD364 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11262A22260F0500AAD364 /* CustomNavigationView.swift */; };
+		4CA5FE04222767DC004964EC /* KaedeEffectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */; };
+		4CA5FE05222767DC004964EC /* EffectsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE02222767DB004964EC /* EffectsTextField.swift */; };
+		4CA5FE06222767DC004964EC /* KeyboardDismissingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */; };
+		4CD31B7C22278B63003EA3A5 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD31B7B22278B63003EA3A5 /* ScheduleViewController.swift */; };
 		4CFE2D2422262CD500EF91A1 /* SwipingController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D1F22262CD300EF91A1 /* SwipingController+UICollectionView.swift */; };
 		4CFE2D2522262CD500EF91A1 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D2022262CD400EF91A1 /* SwipingController.swift */; };
 		4CFE2D2622262CD500EF91A1 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE2D2122262CD400EF91A1 /* Page.swift */; };
@@ -432,7 +435,6 @@
 		05F355D2206ABB12008AA4F7 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		05F355D3206ABB12008AA4F7 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		05F355D4206ABB12008AA4F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		05F355E6206AC62A008AA4F7 /* AgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
 		411481678C2813158B7CE8EC /* Pods_Gappe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gappe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1126142225E08E00AAD364 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/gappe-a34b697fa8481917278847989943f65b2d108bf2/Gappe/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C1126182225EF5300AAD364 /* SynchronizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationModel.swift; sourceTree = "<group>"; };
@@ -441,6 +443,10 @@
 		4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatedDatabase.swift; sourceTree = "<group>"; };
 		4C1126252225FB6A00AAD364 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4C11262A22260F0500AAD364 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeEffectTextField.swift; sourceTree = "<group>"; };
+		4CA5FE02222767DB004964EC /* EffectsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsTextField.swift; sourceTree = "<group>"; };
+		4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismissingView.swift; sourceTree = "<group>"; };
+		4CD31B7B22278B63003EA3A5 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		4CFE2D1F22262CD300EF91A1 /* SwipingController+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwipingController+UICollectionView.swift"; sourceTree = "<group>"; };
 		4CFE2D2022262CD400EF91A1 /* SwipingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		4CFE2D2122262CD400EF91A1 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
@@ -532,7 +538,6 @@
 				05B9FABF2087CD67003327D9 /* ComunicadoPesquisaCell.swift */,
 				052D15482056C7FD00202947 /* PerfilViewController.swift */,
 				05564871205AF9E300EFA418 /* EdicaoPerfilViewController.swift */,
-				05F355E6206AC62A008AA4F7 /* AgendaViewController.swift */,
 				054AD91F2050843E0013BD08 /* SobreViewController.swift */,
 				0537B98F2045D55D00A17427 /* Info.plist */,
 				4C1126142225E08E00AAD364 /* GoogleService-Info.plist */,
@@ -884,6 +889,7 @@
 		4C11262722260EF600AAD364 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				4CA5FE00222767DB004964EC /* Text Field */,
 				4C11262822260F0500AAD364 /* View */,
 			);
 			path = Custom;
@@ -895,6 +901,31 @@
 				4C11262A22260F0500AAD364 /* CustomNavigationView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4CA5FE00222767DB004964EC /* Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */,
+				4CA5FE02222767DB004964EC /* EffectsTextField.swift */,
+				4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */,
+			);
+			path = "Text Field";
+			sourceTree = "<group>";
+		};
+		4CA5FE07222778E0004964EC /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		4CD31B7A22278B38003EA3A5 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				4CD31B7B22278B63003EA3A5 /* ScheduleViewController.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		4CFE2D1C2226297800EF91A1 /* Home Screen */ = {
@@ -921,6 +952,8 @@
 		AE74D8EA20C5DF2A006FA67A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4CD31B7A22278B38003EA3A5 /* Schedule */,
+				4CA5FE07222778E0004964EC /* Menu */,
 				4CFE2D1C2226297800EF91A1 /* Home Screen */,
 				AEB114FA20C702A800B0E183 /* MessageVC.swift */,
 			);
@@ -1212,7 +1245,7 @@
 				0537B9862045D55D00A17427 /* ComunicadosViewController.swift in Sources */,
 				05F355E2206ABB12008AA4F7 /* FSCalendarStickyHeader.m in Sources */,
 				4CFE2D2522262CD500EF91A1 /* SwipingController.swift in Sources */,
-				05F355E7206AC62A008AA4F7 /* AgendaViewController.swift in Sources */,
+				4CA5FE05222767DC004964EC /* EffectsTextField.swift in Sources */,
 				4C11262E22260F0500AAD364 /* CustomNavigationView.swift in Sources */,
 				05F355D5206ABB12008AA4F7 /* FSCalendar+Deprecated.m in Sources */,
 				05F355D6206ABB12008AA4F7 /* FSCalendar.m in Sources */,
@@ -1228,9 +1261,11 @@
 				052D15492056C7FD00202947 /* PerfilViewController.swift in Sources */,
 				054AD917205059650013BD08 /* FMDatabasePool.m in Sources */,
 				0590569F2046F374006B2E87 /* MenuSobreCell.swift in Sources */,
+				4CD31B7C22278B63003EA3A5 /* ScheduleViewController.swift in Sources */,
 				059056A12046F38F006B2E87 /* MenuSairCell.swift in Sources */,
 				4CFE2D2722262CD500EF91A1 /* PageCell.swift in Sources */,
 				05F355D7206ABB12008AA4F7 /* FSCalendarAppearance.m in Sources */,
+				4CA5FE06222767DC004964EC /* KeyboardDismissingView.swift in Sources */,
 				054DCB07207FCAC800C3C446 /* ModalAlertUtilities.swift in Sources */,
 				059056992046F2CA006B2E87 /* MenuMensagensCell.swift in Sources */,
 				05F355DE206ABB12008AA4F7 /* FSCalendarDelegationProxy.m in Sources */,
@@ -1246,6 +1281,7 @@
 				4CFE2D2622262CD500EF91A1 /* Page.swift in Sources */,
 				AE25FE4F20C85D2700BC2C3A /* MessagesCell.swift in Sources */,
 				050D6FDA206C1ABE00B5C16B /* TelaInicialPageViewController.swift in Sources */,
+				4CA5FE04222767DC004964EC /* KaedeEffectTextField.swift in Sources */,
 				05F355DD206ABB12008AA4F7 /* FSCalendarDelegationFactory.m in Sources */,
 				05F355E1206ABB12008AA4F7 /* FSCalendarScopeHandle.m in Sources */,
 				0590569D2046F35A006B2E87 /* MenuEscolaCell.swift in Sources */,

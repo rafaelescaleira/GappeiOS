@@ -49,7 +49,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
             if comunicadoSelecionado.comunicados_resposta == 0 {
                 
                 answerPresentation.text = "RESPOSTA NÃO"
-                answerPresentation.backgroundColor = #colorLiteral(red: 1, green: 0.3098039216, blue: 0.2666666667, alpha: 1)
+                answerPresentation.backgroundColor = #colorLiteral(red: 0.8156862745, green: 0.1215686275, blue: 0.007843137255, alpha: 1)
                 yesButton.alpha = 0
                 noButton.alpha = 0
                 answerPresentation.alpha = 1
@@ -58,7 +58,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
             else if comunicadoSelecionado.comunicados_resposta == 1 {
                 
                 answerPresentation.text = "RESPOSTA SIM"
-                answerPresentation.backgroundColor = #colorLiteral(red: 0.2501441892, green: 0.397867907, blue: 1, alpha: 1)
+                answerPresentation.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
                 yesButton.alpha = 0
                 noButton.alpha = 0
                 answerPresentation.alpha = 1
@@ -96,7 +96,7 @@ extension ComunicadoINTERNOcomAnexoViewController {
                 self.comunicadoSelecionado.commit()
                 
                 self.answerPresentation.text = "RESPOSTA SIM"
-                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.2501441892, green: 0.397867907, blue: 1, alpha: 1)
+                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
                 
                 UIView.animate(withDuration: 0.4, animations: {
                     
@@ -123,7 +123,7 @@ extension ComunicadoINTERNOcomAnexoViewController {
                 self.comunicadoSelecionado.commit()
                 
                 self.answerPresentation.text = "RESPOSTA NÃO"
-                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.9994894862, green: 0.2715682685, blue: 0.2274804413, alpha: 1)
+                self.answerPresentation.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
                 
                 UIView.animate(withDuration: 0.4, animations: {
                     

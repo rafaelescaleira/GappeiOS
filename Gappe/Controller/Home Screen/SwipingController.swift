@@ -15,6 +15,7 @@ class SwipingController: UIViewController, UICollectionViewDelegateFlowLayout, U
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var SalvarBtn: UIButton!
     
     let pages = [
         Page(imageName: "Telas_apresentacao-1"),
@@ -35,10 +36,6 @@ class SwipingController: UIViewController, UICollectionViewDelegateFlowLayout, U
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     @IBAction func handleNext() {
         
         let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
@@ -50,7 +47,11 @@ class SwipingController: UIViewController, UICollectionViewDelegateFlowLayout, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = .white
+        SalvarBtn.layer.shadowColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        SalvarBtn.layer.shadowRadius = 4.0
+        SalvarBtn.layer.shadowOpacity = 0.9
+        SalvarBtn.layer.shadowOffset = .zero
+        SalvarBtn.layer.masksToBounds = false
         collectionView?.register(PageCell.self, forCellWithReuseIdentifier: "cellId")
         
         collectionView?.isPagingEnabled = true

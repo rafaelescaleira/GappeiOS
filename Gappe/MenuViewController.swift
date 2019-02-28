@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharkORM
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var nome: UILabel!
@@ -14,6 +15,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var imagemPerfil: UIImageView!
     
     let database = DatabaseModel()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +59,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             UserDefaults.standard.removeObject(forKey: "nome")
             UserDefaults.standard.removeObject(forKey: "telefone")
             UserDefaults.standard.synchronize()
+            
+            SharkORM.rawQuery("DELETE FROM ComunicadosDatabase")
             
             database.deletaBanco()
         }

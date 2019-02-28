@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TelaLoginViewController: UIViewController {
+class TelaLoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var Login: UITextField!
     @IBOutlet weak var Senha: UITextField!
@@ -29,15 +29,35 @@ class TelaLoginViewController: UIViewController {
         
         DoLogin(login, senha)
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SalvarBtn.layer.cornerRadius = 5
+        SalvarBtn.layer.shadowColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        SalvarBtn.layer.shadowRadius = 4.0
+        SalvarBtn.layer.shadowOpacity = 0.9
+        SalvarBtn.layer.shadowOffset = .zero
+        SalvarBtn.layer.masksToBounds = false
+        
+        let rectShapeEmail = CAShapeLayer()
+        let rectShapePassword = CAShapeLayer()
+        
+        self.Login.delegate = self
+        self.Senha.delegate = self
+        
+        rectShapeEmail.bounds = self.Login.frame
+        rectShapeEmail.position = self.Login.center
+        rectShapeEmail.path = UIBezierPath(roundedRect: self.Login.bounds, byRoundingCorners: [.topLeft, .topRight] , cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        
+        rectShapePassword.bounds = self.Senha.frame
+        rectShapePassword.position = self.Senha.center
+        rectShapePassword.path = UIBezierPath(roundedRect: self.Senha.bounds, byRoundingCorners: [.bottomLeft, .bottomRight] , cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        
+        self.Login.clipsToBounds = true
+        self.Login.layer.mask = rectShapeEmail
+        
+        self.Senha.clipsToBounds = true
+        self.Senha.layer.mask = rectShapePassword
         
         let logado: String = (UserDefaults.standard.object(forKey: "logado") as? String ?? "")!
         if logado == "yes" {
