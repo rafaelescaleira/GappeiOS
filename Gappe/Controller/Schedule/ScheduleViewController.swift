@@ -34,7 +34,7 @@ class ScheduleViewController: UIViewController {
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
         
-        self.datasComunicados = SharkORM.rawQuery("SELECT comunicados_data FROM ComunicadosDatabase WHERE comunicados_mostrar_agenda = '1'")?.rawResults.mutableArrayValue(forKey: "comunicados_data") as? [String] ?? []
+        self.datasComunicados = SharkORM.rawQuery("SELECT comunicados_data FROM ComunicadosDatabase WHERE comunicados_mostrar_agenda = '1'").rawResults.mutableArrayValue(forKey: "comunicados_data") as? [String] ?? []
         calendar.dataSource = self
         calendar.delegate = self
         calendar.backgroundColor = .clear
@@ -75,13 +75,13 @@ extension ScheduleViewController {
         if segue.identifier == "comAnexo" {
             
             let vcDestino = segue.destination as! ComunicadoINTERNOcomAnexoViewController
-            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query()?.where("comunicados_id = \(communicatedID)")?.fetch()?.firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
+            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query().where("comunicados_id = \(communicatedID)").fetch().firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
         }
         
         if segue.identifier == "semAnexo" {
             
             let vcDestino = segue.destination as! ComunicadoINTERNOViewController
-            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query()?.where("comunicados_id = \(communicatedID)")?.fetch()?.firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
+            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query().where("comunicados_id = \(communicatedID)").fetch().firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
         }
     }
 }

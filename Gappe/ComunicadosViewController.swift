@@ -20,8 +20,8 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
     let searchController = UISearchController(searchResultsController: nil)
     private let refreshControl = UIRefreshControl()
     
-    var communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
-    var communicatedFind = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+    var communicated = ComunicadosDatabase.query().order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+    var communicatedFind = ComunicadosDatabase.query().order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
     var communicatedID = 0
     
     override func viewDidLoad() {
@@ -89,8 +89,8 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                         
                         if success {
                             
-                            self.communicated = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
-                            self.communicatedFind = ComunicadosDatabase.query()?.order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+                            self.communicated = ComunicadosDatabase.query().order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
+                            self.communicatedFind = ComunicadosDatabase.query().order(byDescending: "comunicados_criado_em").fetch() as? [ComunicadosDatabase] ?? []
                             self.refreshControl.endRefreshing()
                             self.tableComunicados.reloadData()
                             self.activity_view.stopAnimating()
@@ -134,13 +134,13 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         if segue.identifier == "segueSemAnexo" {
             
             let vcDestino = segue.destination as! ComunicadoINTERNOViewController
-            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query()?.where("comunicados_id = \(communicatedID)")?.fetch()?.firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
+            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query().where("comunicados_id = \(communicatedID)").fetch().firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
         }
         
         if segue.identifier == "segueComAnexo" {
             
             let vcDestino = segue.destination as! ComunicadoINTERNOcomAnexoViewController
-            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query()?.where("comunicados_id = \(communicatedID)")?.fetch()?.firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
+            vcDestino.comunicadoSelecionado = ComunicadosDatabase.query().where("comunicados_id = \(communicatedID)").fetch().firstObject as? ComunicadosDatabase ?? ComunicadosDatabase()
         }
     }
     

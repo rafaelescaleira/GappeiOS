@@ -18,7 +18,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let database = DatabaseModel()
     
-    var user = UserDatabase.query()?.fetch()?.firstObject as? UserDatabase ?? UserDatabase()
+    var user = UserDatabase.query().fetch().firstObject as? UserDatabase ?? UserDatabase()
     let menuTitles = ["Comunicados", "Agenda Gappe", "Mensagens", "Meu Perfil", "Escola Gappe", "Sobre", "Sair"]
     let menuTitleImages: [UIImage] = [UIImage.fontAwesomeIcon(name: .bell, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
     UIImage.fontAwesomeIcon(name: .calendarAlt, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
@@ -48,7 +48,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         DispatchQueue.global(qos: .background).async {
             
-            self.user = UserDatabase.query()?.fetch()?.firstObject as? UserDatabase ?? UserDatabase()
+            self.user = UserDatabase.query().fetch().firstObject as? UserDatabase ?? UserDatabase()
             
             DispatchQueue.main.async {
                 
