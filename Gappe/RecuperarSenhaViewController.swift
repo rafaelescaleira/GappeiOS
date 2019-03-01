@@ -17,17 +17,16 @@ class RecuperarSenhaViewController: UIViewController {
     @IBAction func enviarAction(_ sender: UIButton) {
         recuperarSenha()
     }
-    @IBOutlet weak var backImage: UIImageView!
     
     @IBAction func backButtonPressed(_ sender: Any) {
         
         self.performSegue(withIdentifier: "Back", sender: nil)
     }
+    
     let database = DatabaseModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TelaLoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)

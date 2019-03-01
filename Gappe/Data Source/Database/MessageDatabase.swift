@@ -11,5 +11,11 @@ import SharkORM
 
 class MessageDatabase: SRKObject {
     
-    
+    @objc dynamic var message_id: Int = 0
+    @objc dynamic var message_user_id: Int = 0
+    @objc dynamic var message_responsavel_id: Int = 0
+    @objc dynamic var message_conteudo: String?
+    @objc dynamic var message_tipo: Bool = false
+    @objc dynamic var message_lido: Bool = false
+    @objc dynamic var message_data: Int32 = 0
 }

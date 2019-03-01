@@ -12,7 +12,6 @@ class ComunicadoINTERNOViewController: UIViewController {
     
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var texto: UITextView!
-    @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var answerPresentation: UILabel!
@@ -22,28 +21,11 @@ class ComunicadoINTERNOViewController: UIViewController {
     @IBOutlet weak var noHeight: NSLayoutConstraint!
     @IBOutlet weak var yesHeight: NSLayoutConstraint!
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        
-        self.performSegue(withIdentifier: "Back", sender: nil)
-    }
-    
-    @IBAction func editButtonPressed(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.4, animations: {
-            
-            self.yesButton.alpha = 1
-            self.noButton.alpha = 1
-            self.answerPresentation.alpha = 0
-            self.editButton.alpha = 0
-        })
-    }
-    
     var comunicadoSelecionado = ComunicadosDatabase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
         self.editButton.setImage(.fontAwesomeIcon(name: .penSquare, style: .solid, textColor: .white, size: self.editButton.bounds.size), for: .normal)
         
         self.titulo.text = self.comunicadoSelecionado.comunicados_titulo
@@ -93,6 +75,22 @@ class ComunicadoINTERNOViewController: UIViewController {
 /* Actions */
 
 extension ComunicadoINTERNOViewController {
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "Back", sender: nil)
+    }
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            
+            self.yesButton.alpha = 1
+            self.noButton.alpha = 1
+            self.answerPresentation.alpha = 0
+            self.editButton.alpha = 0
+        })
+    }
     
     @IBAction func yesButtonPressed(_ sender: Any) {
         

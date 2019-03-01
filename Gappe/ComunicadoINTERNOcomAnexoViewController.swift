@@ -14,7 +14,6 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var texto: UILabel!
     @IBOutlet weak var linkAnexo: UIButton!
-    @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -32,7 +31,6 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
         
         linkAnexo.layer.cornerRadius = 15
         
-        self.backImage.image = .fontAwesomeIcon(name: .chevronLeft, style: .solid, textColor: .white, size: self.backImage.bounds.size)
         self.editButton.setImage(.fontAwesomeIcon(name: .penSquare, style: .solid, textColor: .white, size: self.editButton.bounds.size), for: .normal)
         
         self.titulo.text = self.comunicadoSelecionado.comunicados_titulo

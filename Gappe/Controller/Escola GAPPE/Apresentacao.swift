@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct Apresentacao {
+    
+    let imageName: String
+    let title: String
+    let textPresentation: String
+}

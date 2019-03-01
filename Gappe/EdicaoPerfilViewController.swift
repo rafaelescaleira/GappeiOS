@@ -19,6 +19,7 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var repetirSenha: UITextField!
     @IBOutlet weak var botaoSalvar: UIButton!
     @IBOutlet weak var labelValidacao: UILabel!
+    @IBOutlet weak var heightView: NSLayoutConstraint!
     
     var perfilObject:NSMutableArray = NSMutableArray()
     let database = DatabaseModel()
@@ -80,17 +81,7 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         novaSenha.delegate = self
         repetirSenha.delegate = self
         
-        nomeCompleto.setBottomBorder()
-        email.setBottomBorder()
-        telefone.setBottomBorder()
-        senhaAntiga.setBottomBorder()
-        novaSenha.setBottomBorder()
-        repetirSenha.setBottomBorder()
-        
-        imagemPerfil.layer.cornerRadius = imagemPerfil.frame.size.height/2
-        imagemPerfil.layer.borderWidth = 5
-        imagemPerfil.layer.borderColor = UIColor.blue.cgColor
-        imagemPerfil.clipsToBounds = true
+        imagemPerfil.layer.cornerRadius = 15
         
         self.nomeCompleto.text = UserDefaults.standard.object(forKey: "nome") as? String
         self.email.text = UserDefaults.standard.object(forKey: "email") as? String
@@ -112,9 +103,10 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         }
         if notification.name == Notification.Name.UIKeyboardWillShow ||
             notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height+150
+            
+            self.heightView.constant = 720
         } else {
-            view.frame.origin.y = 0
+            self.heightView.constant = 510
         }
         
     }
@@ -281,14 +273,6 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         let task =  URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {
             (data, response, error) -> Void in
             
-            if let data = data {
-//                print("******* response = \(String(describing: response))")
-//                let responseString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-//                print("****** response data = \(responseString!)")
-                
-            } else if error != nil {
-                //print(error.description)
-            }
         })
         task.resume()
         
@@ -323,37 +307,14 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         return "Boundary-\(NSUUID().uuidString)"
     }
 
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 }
 
-
-
 extension NSMutableData {
+    
     func appendString(_ string: String) {
+        
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
         append(data!)
     }
 }
-
-extension UITextField {
-    func setBottomBorder() {
-        self.borderStyle = .none
-        self.layer.backgroundColor = UIColor.white.cgColor
-        
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 0.0
-    }
-}
-
-
-
-
-
-

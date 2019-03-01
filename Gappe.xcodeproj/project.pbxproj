@@ -195,6 +195,9 @@
 		4C6D03642228B25000094EBA /* Tela5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6D03632228B25000094EBA /* Tela5.png */; };
 		4C6D03662228B43600094EBA /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D03652228B43600094EBA /* UserDatabase.swift */; };
 		4C6D03682228C93B00094EBA /* MessageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D03672228C93B00094EBA /* MessageDatabase.swift */; };
+		4CA233C72229D9E3009567ED /* Apresentacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA233C62229D9E3009567ED /* Apresentacao.swift */; };
+		4CA233C92229DA3E009567ED /* ApresentacaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA233C82229DA3E009567ED /* ApresentacaoCollectionViewCell.swift */; };
+		4CA233CB2229DDF6009567ED /* ApresentacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA233CA2229DDF6009567ED /* ApresentacaoViewController.swift */; };
 		4CA5FE04222767DC004964EC /* KaedeEffectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */; };
 		4CA5FE05222767DC004964EC /* EffectsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE02222767DB004964EC /* EffectsTextField.swift */; };
 		4CA5FE06222767DC004964EC /* KeyboardDismissingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */; };
@@ -434,6 +437,9 @@
 		4C6D03632228B25000094EBA /* Tela5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tela5.png; sourceTree = "<group>"; };
 		4C6D03652228B43600094EBA /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
 		4C6D03672228C93B00094EBA /* MessageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDatabase.swift; sourceTree = "<group>"; };
+		4CA233C62229D9E3009567ED /* Apresentacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apresentacao.swift; sourceTree = "<group>"; };
+		4CA233C82229DA3E009567ED /* ApresentacaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApresentacaoCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CA233CA2229DDF6009567ED /* ApresentacaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApresentacaoViewController.swift; sourceTree = "<group>"; };
 		4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeEffectTextField.swift; sourceTree = "<group>"; };
 		4CA5FE02222767DB004964EC /* EffectsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsTextField.swift; sourceTree = "<group>"; };
 		4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismissingView.swift; sourceTree = "<group>"; };
@@ -888,6 +894,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4CA233C52229D9B5009567ED /* Escola GAPPE */ = {
+			isa = PBXGroup;
+			children = (
+				4CA233C62229D9E3009567ED /* Apresentacao.swift */,
+				4CA233C82229DA3E009567ED /* ApresentacaoCollectionViewCell.swift */,
+				4CA233CA2229DDF6009567ED /* ApresentacaoViewController.swift */,
+			);
+			path = "Escola GAPPE";
+			sourceTree = "<group>";
+		};
 		4CA5FE00222767DB004964EC /* Text Field */ = {
 			isa = PBXGroup;
 			children = (
@@ -930,6 +946,7 @@
 		AE74D8EA20C5DF2A006FA67A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4CA233C52229D9B5009567ED /* Escola GAPPE */,
 				059056922046F231006B2E87 /* Menu */,
 				4CD31B7A22278B38003EA3A5 /* Schedule */,
 				4CFE2D1C2226297800EF91A1 /* Home Screen */,
@@ -1252,6 +1269,7 @@
 				4C6D03662228B43600094EBA /* UserDatabase.swift in Sources */,
 				054AD91E20505A810013BD08 /* DatabaseModel.swift in Sources */,
 				05F355DF206ABB12008AA4F7 /* FSCalendarExtensions.m in Sources */,
+				4CA233CB2229DDF6009567ED /* ApresentacaoViewController.swift in Sources */,
 				4CFE2D2622262CD500EF91A1 /* Page.swift in Sources */,
 				AE25FE4F20C85D2700BC2C3A /* MessagesCell.swift in Sources */,
 				050D6FDA206C1ABE00B5C16B /* TelaInicialPageViewController.swift in Sources */,
@@ -1261,6 +1279,7 @@
 				054AD9202050843E0013BD08 /* SobreViewController.swift in Sources */,
 				0537B9842045D55D00A17427 /* AppDelegate.swift in Sources */,
 				05F355DA206ABB12008AA4F7 /* FSCalendarCollectionView.m in Sources */,
+				4CA233C92229DA3E009567ED /* ApresentacaoCollectionViewCell.swift in Sources */,
 				054312EC2090D4C20009ECA9 /* RecuperarSenhaViewController.swift in Sources */,
 				4C11261C2225F2BA00AAD364 /* DatabaseSharkModel.swift in Sources */,
 				05A32A09204F0B59004F31C3 /* ComunicadoINTERNOViewController.swift in Sources */,
@@ -1273,6 +1292,7 @@
 				054DCB09207FCAC800C3C446 /* UIFont+N1Fonts.swift in Sources */,
 				4C6D03682228C93B00094EBA /* MessageDatabase.swift in Sources */,
 				05F355DC206ABB12008AA4F7 /* FSCalendarConstants.m in Sources */,
+				4CA233C72229D9E3009567ED /* Apresentacao.swift in Sources */,
 				054AD919205059650013BD08 /* FMResultSet.m in Sources */,
 				05908AA020484B530013B76C /* EscolaPAGEViewController.swift in Sources */,
 				054DCB08207FCAC800C3C446 /* UIColor+N1Colors.swift in Sources */,
