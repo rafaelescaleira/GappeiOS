@@ -26,7 +26,7 @@ class ApresentacaoViewController: UIViewController, UICollectionViewDelegateFlow
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.register(PageCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.register(ApresentacaoCollectionViewCell.self, forCellWithReuseIdentifier: "ApresentacaoCollectionViewCell")
         collectionView?.isPagingEnabled = true
     }
     
@@ -70,7 +70,7 @@ extension ApresentacaoViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ApresentacaoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApresentacaoCollectionViewCell", for: indexPath) as! ApresentacaoCollectionViewCell
         
         let page = pages[indexPath.item]
         cell.apresentacao = page
