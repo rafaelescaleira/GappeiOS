@@ -17,6 +17,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     let database = DatabaseModel()
+    
+    var user = UserDatabase.query()?.fetch()?.firstObject as? UserDatabase ?? UserDatabase()
     let menuTitles = ["Comunicados", "Agenda Gappe", "Mensagens", "Meu Perfil", "Escola Gappe", "Sobre", "Sair"]
     let menuTitleImages: [UIImage] = [UIImage.fontAwesomeIcon(name: .bell, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
     UIImage.fontAwesomeIcon(name: .calendarAlt, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
@@ -39,16 +41,20 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         imagemPerfil.layer.cornerRadius = imagemPerfil.frame.size.height/2
         imagemPerfil.clipsToBounds = true
         
-        self.nome.text = UserDefaults.standard.object(forKey: "nome") as? String
-        self.email.text = UserDefaults.standard.object(forKey: "email") as? String
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        if let imgData = UserDefaults.standard.object(forKey: "myImageKey") as? NSData {
-            let retrievedImg = UIImage(data: imgData as Data)
+        DispatchQueue.global(qos: .background).async {
             
-            imagemPerfil.image = retrievedImg
+            self.user = UserDatabase.query()?.fetch()?.firstObject as? UserDatabase ?? UserDatabase()
+            
+            DispatchQueue.main.async {
+                
+                self.nome.text = self.user.user_nome?.lowercased().capitalized
+                self.email.text = self.user.user_email
+            }
         }
     }
     
@@ -70,6 +76,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             UserDefaults.standard.removeObject(forKey: "telefone")
             UserDefaults.standard.synchronize()
             
+            SharkORM.rawQuery("DELETE FROM UserDatabase")
             SharkORM.rawQuery("DELETE FROM ComunicadosDatabase")
             database.deletaBanco()
         }

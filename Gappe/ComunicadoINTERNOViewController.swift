@@ -96,7 +96,7 @@ extension ComunicadoINTERNOViewController {
     
     @IBAction func yesButtonPressed(_ sender: Any) {
         
-        SynchronizationModel.instance.requestCommunicateAnswer(comunicadoSelecionado: self.comunicadoSelecionado, parameters: SynchronizationModel.instance.getParametersCommunicatedAnswer(resposta: 1, idCommunicated: (self.comunicadoSelecionado.comunicados_comunicados_responsavel_id! as NSString).integerValue)) { (success, title, message) in
+        SynchronizationModel.instance.requestCommunicateAnswer(parameters: SynchronizationModel.instance.getParametersCommunicatedAnswer(resposta: 1, idCommunicated: (self.comunicadoSelecionado.comunicados_comunicados_responsavel_id! as NSString).integerValue)) { (success, title, message) in
             
             if success {
                 
@@ -124,7 +124,7 @@ extension ComunicadoINTERNOViewController {
     
     @IBAction func noButtonPressed(_ sender: Any) {
         
-        SynchronizationModel.instance.requestCommunicateAnswer(comunicadoSelecionado: self.comunicadoSelecionado, parameters: SynchronizationModel.instance.getParametersCommunicatedAnswer(resposta: 0, idCommunicated: (self.comunicadoSelecionado.comunicados_comunicados_responsavel_id! as NSString).integerValue)) { (success, title, message) in
+        SynchronizationModel.instance.requestCommunicateAnswer(parameters: SynchronizationModel.instance.getParametersCommunicatedAnswer(resposta: 0, idCommunicated: (self.comunicadoSelecionado.comunicados_comunicados_responsavel_id! as NSString).integerValue)) { (success, title, message) in
             
             if success {
                 

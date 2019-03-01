@@ -191,8 +191,10 @@
 		4C1126232225F85600AAD364 /* CommunicatedDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */; };
 		4C1126262225FB6A00AAD364 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1126252225FB6A00AAD364 /* NetworkManager.swift */; };
 		4C11262E22260F0500AAD364 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11262A22260F0500AAD364 /* CustomNavigationView.swift */; };
-		4C25437522280C9B0083A034 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C25437422280C9A0083A034 /* GoogleService-Info.plist */; };
-		4C2543772228101A0083A034 /* Tela5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2543762228101A0083A034 /* Tela5.png */; };
+		4C6D03622228B20600094EBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C6D03612228B20500094EBA /* GoogleService-Info.plist */; };
+		4C6D03642228B25000094EBA /* Tela5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6D03632228B25000094EBA /* Tela5.png */; };
+		4C6D03662228B43600094EBA /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D03652228B43600094EBA /* UserDatabase.swift */; };
+		4C6D03682228C93B00094EBA /* MessageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D03672228C93B00094EBA /* MessageDatabase.swift */; };
 		4CA5FE04222767DC004964EC /* KaedeEffectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */; };
 		4CA5FE05222767DC004964EC /* EffectsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE02222767DB004964EC /* EffectsTextField.swift */; };
 		4CA5FE06222767DC004964EC /* KeyboardDismissingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */; };
@@ -428,8 +430,10 @@
 		4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatedDatabase.swift; sourceTree = "<group>"; };
 		4C1126252225FB6A00AAD364 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4C11262A22260F0500AAD364 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
-		4C25437422280C9A0083A034 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/gappe-a34b697fa8481917278847989943f65b2d108bf2/Gappe/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4C2543762228101A0083A034 /* Tela5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tela5.png; path = ../../../../Downloads/Tela5.png; sourceTree = "<group>"; };
+		4C6D03612228B20500094EBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C6D03632228B25000094EBA /* Tela5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tela5.png; sourceTree = "<group>"; };
+		4C6D03652228B43600094EBA /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		4C6D03672228C93B00094EBA /* MessageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDatabase.swift; sourceTree = "<group>"; };
 		4CA5FE01222767DB004964EC /* KaedeEffectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeEffectTextField.swift; sourceTree = "<group>"; };
 		4CA5FE02222767DB004964EC /* EffectsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsTextField.swift; sourceTree = "<group>"; };
 		4CA5FE03222767DB004964EC /* KeyboardDismissingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismissingView.swift; sourceTree = "<group>"; };
@@ -525,7 +529,7 @@
 				05564871205AF9E300EFA418 /* EdicaoPerfilViewController.swift */,
 				054AD91F2050843E0013BD08 /* SobreViewController.swift */,
 				0537B98F2045D55D00A17427 /* Info.plist */,
-				4C25437422280C9A0083A034 /* GoogleService-Info.plist */,
+				4C6D03612228B20500094EBA /* GoogleService-Info.plist */,
 			);
 			path = Gappe;
 			sourceTree = "<group>";
@@ -726,7 +730,7 @@
 				AEE0C33521133F1B0018B88F /* Tela2.png */,
 				AEE0C33321133EF80018B88F /* Tela3.png */,
 				AEE0C33621133F1D0018B88F /* Tela4.png */,
-				4C2543762228101A0083A034 /* Tela5.png */,
+				4C6D03632228B25000094EBA /* Tela5.png */,
 				AEE0C32F21133E960018B88F /* logo_completa.png */,
 				AEE0C32D21133D000018B88F /* icone_SOL.png */,
 				054DCA27207FCAC800C3C446 /* cameraRollIcon.png */,
@@ -853,6 +857,8 @@
 			isa = PBXGroup;
 			children = (
 				4C1126222225F85600AAD364 /* CommunicatedDatabase.swift */,
+				4C6D03652228B43600094EBA /* UserDatabase.swift */,
+				4C6D03672228C93B00094EBA /* MessageDatabase.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -1071,6 +1077,7 @@
 				054DCA71207FCAC800C3C446 /* loadBubble_0009_Layer-30@1x.png in Resources */,
 				054DCAAD207FCAC800C3C446 /* loadBubble_0030_Layer-9@2x.png in Resources */,
 				054DCABB207FCAC800C3C446 /* loadBubble_0005_Layer-34@3x.png in Resources */,
+				4C6D03622228B20600094EBA /* GoogleService-Info.plist in Resources */,
 				054DCAC5207FCAC800C3C446 /* loadBubble_0015_Layer-24@3x.png in Resources */,
 				054DCA7A207FCAC800C3C446 /* loadBubble_0018_Layer-21@1x.png in Resources */,
 				054DCA89207FCAC800C3C446 /* loadBubble_0033_Layer-6@1x.png in Resources */,
@@ -1095,8 +1102,8 @@
 				054DCA6D207FCAC800C3C446 /* loadBubble_0005_Layer-34@1x.png in Resources */,
 				054DCA75207FCAC800C3C446 /* loadBubble_0013_Layer-26@1x.png in Resources */,
 				054DCACA207FCAC800C3C446 /* loadBubble_0020_Layer-19@3x.png in Resources */,
+				4C6D03642228B25000094EBA /* Tela5.png in Resources */,
 				054DCAC9207FCAC800C3C446 /* loadBubble_0019_Layer-20@3x.png in Resources */,
-				4C2543772228101A0083A034 /* Tela5.png in Resources */,
 				054DCA90207FCAC800C3C446 /* loadBubble_0001_Layer-38@2x.png in Resources */,
 				054DCA67207FCAC800C3C446 /* loadBubble@3x.gif in Resources */,
 				054DCA73207FCAC800C3C446 /* loadBubble_0011_Layer-28@1x.png in Resources */,
@@ -1146,7 +1153,6 @@
 				054DCA9F207FCAC800C3C446 /* loadBubble_0016_Layer-23@2x.png in Resources */,
 				054DCAB1207FCAC800C3C446 /* loadBubble_0034_Layer-5@2x.png in Resources */,
 				054DCA83207FCAC800C3C446 /* loadBubble_0027_Layer-12@1x.png in Resources */,
-				4C25437522280C9B0083A034 /* GoogleService-Info.plist in Resources */,
 				054DCAB6207FCAC800C3C446 /* loadBubble_0000_Layer-39@3x.png in Resources */,
 				054DCAA2207FCAC800C3C446 /* loadBubble_0019_Layer-20@2x.png in Resources */,
 				054DCABA207FCAC800C3C446 /* loadBubble_0004_Layer-35@3x.png in Resources */,
@@ -1243,6 +1249,7 @@
 				05908AA2204895EB0013B76C /* OGAPPEViewController.swift in Sources */,
 				4C1126202225F7A900AAD364 /* AlertModel.swift in Sources */,
 				05F355DB206ABB12008AA4F7 /* FSCalendarCollectionViewLayout.m in Sources */,
+				4C6D03662228B43600094EBA /* UserDatabase.swift in Sources */,
 				054AD91E20505A810013BD08 /* DatabaseModel.swift in Sources */,
 				05F355DF206ABB12008AA4F7 /* FSCalendarExtensions.m in Sources */,
 				4CFE2D2622262CD500EF91A1 /* Page.swift in Sources */,
@@ -1264,6 +1271,7 @@
 				05F355E4206ABB12008AA4F7 /* FSCalendarWeekdayView.m in Sources */,
 				0537B9992045DA7700A17427 /* SWRevealViewController.m in Sources */,
 				054DCB09207FCAC800C3C446 /* UIFont+N1Fonts.swift in Sources */,
+				4C6D03682228C93B00094EBA /* MessageDatabase.swift in Sources */,
 				05F355DC206ABB12008AA4F7 /* FSCalendarConstants.m in Sources */,
 				054AD919205059650013BD08 /* FMResultSet.m in Sources */,
 				05908AA020484B530013B76C /* EscolaPAGEViewController.swift in Sources */,
@@ -1418,7 +1426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZTK56FB5D7;
 				INFOPLIST_FILE = Gappe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.gappe.aplicativo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1442,7 +1450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZTK56FB5D7;
 				INFOPLIST_FILE = Gappe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.gappe.aplicativo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

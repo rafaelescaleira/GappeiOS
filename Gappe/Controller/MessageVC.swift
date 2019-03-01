@@ -8,13 +8,14 @@
 
 import UIKit
 
-class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableMessages: UITableView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var reloadImage: UIImageView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var topNavigationView: NSLayoutConstraint!
     
     let database = DatabaseModel()
     
@@ -49,24 +50,21 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        
         tableMessages.rowHeight = UITableViewAutomaticDimension
         tableMessages.estimatedRowHeight = 68
-
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
     }
 
-    //func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-       // if let messageText = messagesObject[indexPath.item].item{
-       
-       // }
-   // }
+    @objc func handleTap(sender: UITapGestureRecognizer? = nil) {
+        self.view.endEditing(true)
+    }
     
     func hideKeyboard() {
         messageField.resignFirstResponder()
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver("loadList")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -107,11 +105,6 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             cell.viewMessage.backgroundColor = #colorLiteral(red: 0.9987735152, green: 0.7140055299, blue: 0, alpha: 0.2)
         }
         return cell
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     @IBAction func refresh() {
@@ -181,10 +174,6 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         return true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.tableMessages.endEditing(true);
-    }
-    
     func scrollToBottom(){
         DispatchQueue.main.async {
             if self.messagesObject.count > 0 {
@@ -198,12 +187,14 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
-        if notification.name == Notification.Name.UIKeyboardWillShow ||
-            notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height
-        } else {
-            view.frame.origin.y = 0
+        if notification.name == Notification.Name.UIKeyboardWillShow {
+            self.view.frame.origin.y = -keyboardRect.height
+            self.topNavigationView.constant = keyboardRect.height
         }
         
+        else if notification.name == Notification.Name.UIKeyboardWillHide {
+            self.view.frame.origin.y = 0
+            self.topNavigationView.constant = 0
+        }
     }
 }

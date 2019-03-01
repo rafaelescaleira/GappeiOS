@@ -27,7 +27,19 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        DoLogin(login, senha)
+        SynchronizationModel.instance.requestLogin(parameters: SynchronizationModel.instance.getParametersLogin(email: login, senha: senha)) { (success, title, message) in
+            
+            if !success {
+                
+                self.present(AlertModel.instance.setAlert(title: title, message: message, titleColor: #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1), style: .alert), animated: true, completion: nil)
+            }
+            
+            else {
+                
+                self.DoLogin(login, senha)
+            }
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -166,24 +178,28 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
                             let contador = todosEventos.count
                             if contador > 0 {
                                 for i in 0...contador-1 {
-                                    let resultado = todosEventos[i] as? NSDictionary
                                     
-                                    let id: Int = Int(resultado!["id"] as! String)!
-                                    let titulo: String = resultado!["titulo"] as? String ?? ""
-                                    let tipo_id: String = resultado!["tipo_id"] as? String ?? ""
-                                    let texto: String = resultado!["texto"] as? String ?? ""
-                                    let situacao: String = resultado!["situacao"] as? String ?? ""
-                                    let recebe_resposta: String = resultado!["recebe_resposta"] as? String ?? ""
-                                    let mostrar_agenda: String = resultado!["mostrar_agenda"] as? String ?? ""
-                                    let data: String = resultado!["data"] as? String ?? ""
-                                    let criado_em: String = resultado!["criado_em"] as? String ?? ""
-                                    let comunicados_responsavel_id: String = resultado!["comunicados_responsavel_id"] as? String ?? ""
-                                    let colaborador_id: String = resultado!["colaborador_id"] as? String ?? ""
-                                    let attach: String = resultado!["attach"] as? String ?? ""
+                                    autoreleasepool {
+                                        
+                                        let resultado = todosEventos[i] as? NSDictionary
+                                        
+                                        let id: Int = Int(resultado!["id"] as! String)!
+                                        let titulo: String = resultado!["titulo"] as? String ?? ""
+                                        let tipo_id: String = resultado!["tipo_id"] as? String ?? ""
+                                        let texto: String = resultado!["texto"] as? String ?? ""
+                                        let situacao: String = resultado!["situacao"] as? String ?? ""
+                                        let recebe_resposta: String = resultado!["recebe_resposta"] as? String ?? ""
+                                        let mostrar_agenda: String = resultado!["mostrar_agenda"] as? String ?? ""
+                                        let data: String = resultado!["data"] as? String ?? ""
+                                        let criado_em: String = resultado!["criado_em"] as? String ?? ""
+                                        let comunicados_responsavel_id: String = resultado!["comunicados_responsavel_id"] as? String ?? ""
+                                        let colaborador_id: String = resultado!["colaborador_id"] as? String ?? ""
+                                        let attach: String = resultado!["attach"] as? String ?? ""
                                     
-                                    
-                                    let tudo : NSArray = NSArray(objects: id, titulo, tipo_id, texto, situacao, recebe_resposta, mostrar_agenda, data, criado_em, comunicados_responsavel_id, colaborador_id, attach)
-                                    comunicados.add(tudo)
+                                        
+                                        let tudo : NSArray = NSArray(objects: id, titulo, tipo_id, texto, situacao, recebe_resposta, mostrar_agenda, data, criado_em, comunicados_responsavel_id, colaborador_id, attach)
+                                        comunicados.add(tudo)
+                                    }
                                 }
                             }
                             
@@ -197,7 +213,7 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         let UrlApiMensagens = NSURL(string:"\(database.getURLBase())/api/escola_mensagens/sync/\(id_user)/0")
-        
+        print(UrlApiMensagens)
         let request = NSMutableURLRequest(url: UrlApiMensagens! as URL)
         
         request.setValue("application/json", forHTTPHeaderField: "Accept")

@@ -10,7 +10,7 @@ import UIKit
 import SharkORM
 import FontAwesome_swift
 
-class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var tableComunicados: UITableView!
@@ -53,7 +53,17 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func refresh(sender: AnyObject) {
         
         self.viewWillAppear(true)
+        
+        UIView.animate(withDuration: 0.5) { () -> Void in
+            self.reloadImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+            self.reloadImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)
+        }, completion: nil)
     }
+    
+    @IBAction func unwindFromComunicados(unwindSegue: UIStoryboardSegue) {  }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -75,7 +85,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                     self.activity_view.stopAnimating()
                     self.activity_view.hidesWhenStopped = true
                     
-                    SynchronizationModel.instance.requestCommunicated(idUser: userID) { (success, title, message) in
+                    SynchronizationModel.instance.requestCommunicated(userID: userID) { (success, title, message) in
                         
                         if success {
                             

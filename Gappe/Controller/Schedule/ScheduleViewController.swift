@@ -68,6 +68,8 @@ class ScheduleViewController: UIViewController {
 
 extension ScheduleViewController {
     
+    @IBAction func unwindFromAgenda(unwindSegue: UIStoryboardSegue) {  }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "comAnexo" {
