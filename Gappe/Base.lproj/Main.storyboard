@@ -3364,9 +3364,6 @@ Aulas extras de futsal e ballet;</string>
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="handleNext" destination="aEc-hm-sP9" eventType="touchUpInside" id="Wrc-9u-US8"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-BF-nRP">
                                 <rect key="frame" x="97.666666666666686" y="728" width="180" height="50"/>
@@ -3407,9 +3404,6 @@ Aulas extras de futsal e ballet;</string>
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="handlePrev" destination="aEc-hm-sP9" eventType="touchUpInside" id="CFF-He-nYG"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3432,9 +3426,7 @@ Aulas extras de futsal e ballet;</string>
                     <connections>
                         <outlet property="collectionView" destination="eeY-Gq-ELH" id="kh2-kk-7T4"/>
                         <outlet property="collectionViewFlowLayout" destination="rD7-8V-7Fy" id="E9i-fH-sk5"/>
-                        <outlet property="nextButton" destination="VaW-RH-QUU" id="ST3-If-ktE"/>
                         <outlet property="pageControl" destination="LJv-kj-cSq" id="Pzk-pl-yeQ"/>
-                        <outlet property="previousButton" destination="ECw-Z9-86c" id="Ksu-p6-lnW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yr-wG-pcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
