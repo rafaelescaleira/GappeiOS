@@ -27,7 +27,7 @@ class ApresentacaoCollectionViewCell: UICollectionViewCell {
     }
     
     private let bearImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "bear_first"))
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "Apresentacao0"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
