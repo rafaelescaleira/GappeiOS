@@ -15,6 +15,9 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var tableComunicados: UITableView!
     @IBOutlet weak var reloadImage: UIImageView!
+    @IBOutlet weak var viewSearch: UIView!
+    @IBOutlet weak var heightViewSearch: NSLayoutConstraint!
+    @IBOutlet weak var navigationView: UIView!
     
     let activity_view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     let searchController = UISearchController(searchResultsController: nil)
@@ -31,11 +34,27 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Título do comunicado"
+        searchController.searchBar.placeholder = "Informe o título do comunicado"
         definesPresentationContext = true
-        self.tableComunicados.tableHeaderView = searchController.searchBar
-        searchController.searchBar.tintColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
-        searchController.searchBar.barTintColor = #colorLiteral(red: 0.8859606385, green: 0.8895940185, blue: 0.926838696, alpha: 1)
+        self.heightViewSearch.constant = searchController.searchBar.bounds.height
+        
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.8859606385, green: 0.8895940185, blue: 0.926838696, alpha: 1)
+        searchController.searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        navigationView.backgroundColor = searchController.searchBar.barTintColor
+        
+        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        
+        let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
+        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView?.tintColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        
+        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        clearButton.tintColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        
+        self.viewSearch.addSubview(searchController.searchBar)
         
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)

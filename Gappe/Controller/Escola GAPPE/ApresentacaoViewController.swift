@@ -10,6 +10,7 @@ import UIKit
 
 class ApresentacaoViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
@@ -26,8 +27,14 @@ class ApresentacaoViewController: UIViewController, UICollectionViewDelegateFlow
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
         collectionView?.register(ApresentacaoCollectionViewCell.self, forCellWithReuseIdentifier: "ApresentacaoCollectionViewCell")
         collectionView?.isPagingEnabled = true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 }

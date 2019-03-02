@@ -81,8 +81,15 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath) as! MessagesCell
         cell.message.text = message.object(at: 0) as? String
         cell.label.text = "Gappe"
+        
+        cell.viewMessage.translatesAutoresizingMaskIntoConstraints = false
+        cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (cell.bounds.width - 30)))
 
         if message.object(at: 4) as? String == "" {
+            
+            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .top, relatedBy: .equal, toItem: cell, attribute: .top, multiplier: 1, constant: 7))
+            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .trailing, relatedBy: .equal, toItem: cell, attribute: .trailing, multiplier: 1, constant: -15))
+            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .bottom, relatedBy: .equal, toItem: cell, attribute: .bottom, multiplier: 1, constant: -7))
             
             cell.label.text = (UserDefaults.standard.object(forKey: "nome") as? String)?.lowercased().capitalized
             cell.message.textAlignment = NSTextAlignment.right
@@ -96,6 +103,10 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         else {
             
+            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .top, relatedBy: .equal, toItem: cell, attribute: .top, multiplier: 1, constant: 7))
+            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .leading, relatedBy: .equal, toItem: cell, attribute: .leading, multiplier: 1, constant: 15))
+            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .bottom, relatedBy: .equal, toItem: cell, attribute: .bottom, multiplier: 1, constant: -7))
+            
             cell.message.textAlignment = NSTextAlignment.left
             cell.label.textAlignment = NSTextAlignment.left
             
@@ -108,6 +119,14 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     @IBAction func refresh() {
+        
+        UIView.animate(withDuration: 0.5) { () -> Void in
+            self.reloadImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+            self.reloadImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)
+        }, completion: nil)
         self.messagesObject = database.selectMensagens()
         
         DispatchQueue.main.async(execute: {

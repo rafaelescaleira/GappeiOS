@@ -20,6 +20,7 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var botaoSalvar: UIButton!
     @IBOutlet weak var labelValidacao: UILabel!
     @IBOutlet weak var heightView: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var perfilObject:NSMutableArray = NSMutableArray()
     let database = DatabaseModel()
@@ -78,8 +79,11 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         email.delegate = self
         telefone.delegate = self
         senhaAntiga.delegate = self
+        senhaAntiga.attributedPlaceholder = NSAttributedString(string: "Senha Antiga", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)])
         novaSenha.delegate = self
+        novaSenha.attributedPlaceholder = NSAttributedString(string: "Nova Senha", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)])
         repetirSenha.delegate = self
+        repetirSenha.attributedPlaceholder = NSAttributedString(string: "Repetir Senha", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)])
         
         imagemPerfil.layer.cornerRadius = 15
         
@@ -98,17 +102,34 @@ class EdicaoPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     @objc func keyboardWillChange(notification: Notification) {
-        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
+        
         if notification.name == Notification.Name.UIKeyboardWillShow ||
             notification.name == Notification.Name.UIKeyboardWillChangeFrame {
             
-            self.heightView.constant = 720
+            self.heightView.constant = 764
         } else {
             self.heightView.constant = 510
         }
         
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        let toolbar = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        
+        let bbiSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let bbiSubmit = UIBarButtonItem.init(title: "Pronto", style: .plain, target: self, action: #selector(doBtnSubmit))
+        
+        bbiSubmit.tintColor = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
+        toolbar.items = [bbiSpacer, bbiSubmit]
+        textField.inputAccessoryView = toolbar
+        
+        return true
+    }
+    
+    @objc func doBtnSubmit() {
+        
+        scrollView.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
