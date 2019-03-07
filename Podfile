@@ -12,6 +12,5 @@ target 'Gappe' do
   pod 'PromiseKit/Promise', '~> 1.7.6'
   pod ’SharkORM’
   pod 'ReachabilitySwift'
-  pod 'FontAwesome.swift'
 
 end

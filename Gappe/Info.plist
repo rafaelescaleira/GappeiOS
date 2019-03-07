@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -28,7 +28,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Permitir o acesso a câmera do dispositivo? O aplicativo irá capturar a imagem e salvar como sua imagem de perfil!</string>
+	<string>Permitir o acesso a câmera do dispositivo? O aplicativo irá capturar a imagem e salvar como sua imagem de perfil</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Permitir o acesso a media do dispositivo? Precisamos para que você possa escolher a foto de perfil </string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

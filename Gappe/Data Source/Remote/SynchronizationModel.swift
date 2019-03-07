@@ -12,6 +12,8 @@ let LINK_GLOBAL = "http://165.227.86.154/api/"
 let LINK_COMMUNICATED = LINK_GLOBAL + "comunicados/meus_comunicados/"
 let LINK_COMMUNICATED_ANSWER = LINK_GLOBAL + "comunicados/responder"
 let LINK_LOGIN = LINK_GLOBAL + "users/login"
+let LINK_UPLOAD_PERFIL = LINK_GLOBAL + "users/"
+let LINK_PROFILE_IMAGE = LINK_GLOBAL + "users/"
 let LINK_MENSAGEN = LINK_GLOBAL + "escola_mensagens/sync/"
 
 class SynchronizationModel {
@@ -179,25 +181,134 @@ class SynchronizationModel {
                     let newData = UserDatabase()
                     
                     newData.user_id = (userDict["id"] as! NSString).integerValue
-                    newData.user_nome = userDict["nome"] as? String
-                    newData.user_telefone = userDict["telefone"] as? String
-                    newData.user_email = userDict["email"] as? String
-                    newData.user_foto = userDict["foto"] as? String
-                    newData.user_device_token = userDict["device_token"] as? String
+                    newData.user_nome = userDict["nome"] as? String ?? ""
+                    newData.user_telefone = userDict["telefone"] as? String ?? ""
+                    newData.user_email = userDict["email"] as? String ?? ""
+                    newData.user_device_token = userDict["device_token"] as? String ?? ""
                     newData.user_trocar_senha = userDict["trocar_senha"] as? Bool ?? false
                     newData.user_isLogin = true
-                    newData.commit()
                     
                     DispatchQueue.main.async {
                         
                         print("Login Efetuado Com Sucesso")
-                        completion(true, title, message)
+                        
+                        SynchronizationModel.instance.requestProfileImage(user: newData, completion: { (s, t, m) in
+                            
+                            completion(s, t, m)
+                        })
                     }
                 }
             }
                 
             catch {}
         })
+        
+        task.resume()
+    }
+    
+    func requestUploadProfile(user: UserDatabase, completion: @escaping (Bool, String, String) -> ()) {
+        
+        let url = URL(string: LINK_UPLOAD_PERFIL + "\(user.user_id)")!
+        
+        let request = NSMutableURLRequest(url: url)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "PUT"
+        
+        let session = URLSession(configuration:URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
+        
+        let data = "id=\(user.user_id)&nome=\(user.user_nome)&email=\(user.user_email)&telefone=\(user.user_email)".data(using: String.Encoding.utf8)
+        
+        request.httpBody = data
+        
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            
+            if error != nil {
+                
+                DispatchQueue.main.async {
+                    
+                    completion(false, "Falha ao Enviar Dados", "Verifique se a aplicação está atualizada")
+                }
+            }
+                
+            else {
+                
+                DispatchQueue.main.async {
+                    
+                    user.commit()
+                    completion(true, "Sucesso ao Salvar", "Os dados foram salvos com sucesso")
+                }
+            }
+        }
+        
+        dataTask.resume()
+    }
+    
+    func requestChangePassword(userID: Int, senhaAntiga: String, senhaNova: String, completion: @escaping (Bool, String, String) -> ()) {
+        
+        let url = URL(string: LINK_UPLOAD_PERFIL + "\(userID)")!
+        
+        let request = NSMutableURLRequest(url: url)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "PUT"
+        let session = URLSession(configuration:URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
+        
+        let data = "id=\(userID)&antiga=\(senhaAntiga)&nova=\(senhaNova)".data(using: String.Encoding.utf8)
+        
+        request.httpBody = data
+        
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            
+            if error != nil {
+                
+                DispatchQueue.main.async {
+                    
+                    completion(false, "Erro ao Trocar Senha", "Não foi possível trocar sua senha")
+                }
+            }
+                
+            else {
+                
+                DispatchQueue.main.async {
+                    
+                    completion(false, "Sucesso ao Trocar Senha", "Sua senha foi alterada com sucesso")
+                }
+            }
+        }
+        
+        dataTask.resume()
+        
+    }
+    
+    func requestProfileImage(user: UserDatabase, completion: @escaping (Bool, String, String) -> ()) {
+        
+        let url: URL = URL(string: LINK_PROFILE_IMAGE + "\(user.user_id)" + "/foto")!
+        print(url)
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        
+        let headers = ["Accept": "image/jpeg"]
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            
+            DispatchQueue.global(qos: .background).async {
+                
+                guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                    let data = data, error == nil
+                    else { return }
+                user.user_foto = data
+                user.commit()
+                
+                DispatchQueue.main.async {
+                    
+                    print("Finalizado a obtenção de Imagens")
+                    completion(true, "", "")
+                }
+            }
+                
+        }
         
         task.resume()
     }

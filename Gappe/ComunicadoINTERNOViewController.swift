@@ -26,7 +26,7 @@ class ComunicadoINTERNOViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.editButton.setImage(.fontAwesomeIcon(name: .penSquare, style: .solid, textColor: .white, size: self.editButton.bounds.size), for: .normal)
+        self.editButton.setImage(UIImage(named: "PenSquare")!, for: .normal)
         
         self.titulo.text = self.comunicadoSelecionado.comunicados_titulo
         self.texto.text = self.comunicadoSelecionado.comunicados_texto

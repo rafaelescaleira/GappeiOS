@@ -30,7 +30,6 @@ PODS:
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Reachability (~> 5.2)
     - Protobuf (~> 3.1)
-  - FontAwesome.swift (1.5.1)
   - GoogleAppMeasurement (5.6.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -68,7 +67,6 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
-  - FontAwesome.swift
   - PromiseKit/Promise (~> 1.7.6)
   - ReachabilitySwift
   - SharkORM
@@ -81,7 +79,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
-    - FontAwesome.swift
     - GoogleAppMeasurement
     - GoogleUtilities
     - nanopb
@@ -97,7 +94,6 @@ SPEC CHECKSUMS:
   FirebaseCore: c0c4befb82374d6aef64d800e569f47625352edc
   FirebaseInstanceID: 4522aad88f69297622062c0e9ffccdee3dd9b151
   FirebaseMessaging: 08289db05bdc71d91fe70916de95bb0c3c86ca9b
-  FontAwesome.swift: 9b5a9b9adb6d48b2d37c1e789889ef377cfbc205
   GoogleAppMeasurement: 008e04ecd8efedd97a693aea8634aefe220bd26e
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
@@ -106,6 +102,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   SharkORM: ff65244dfc2e1fa4613badad7c42f6febc1951cc
 
-PODFILE CHECKSUM: 601f60f615f882cf5167d021afc0e94ed461e4f9
+PODFILE CHECKSUM: 8e65a2cbc1afa2ba290abd9525bbc3303a52b5da
 
 COCOAPODS: 1.5.3

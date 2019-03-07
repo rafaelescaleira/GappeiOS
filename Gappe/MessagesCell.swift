@@ -15,7 +15,6 @@ class MessagesCell: UITableViewCell {
     @IBOutlet weak var viewMessage: UIView!
     @IBOutlet weak var leftViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var widhtView: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

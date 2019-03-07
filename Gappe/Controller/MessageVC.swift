@@ -26,8 +26,8 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sendButton.setImage(UIImage.fontAwesomeIcon(name: .paperPlane, style: .solid, textColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), size: self.sendButton.bounds.size), for: .normal)
-        self.reloadImage.image = .fontAwesomeIcon(name: .syncAlt, style: .solid, textColor: .white, size: self.reloadImage.bounds.size)
+        self.sendButton.setImage(UIImage(named: "SendIcon")!, for: .normal)
+        self.reloadImage.image = UIImage(named: "Sync")
         
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
@@ -81,15 +81,8 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath) as! MessagesCell
         cell.message.text = message.object(at: 0) as? String
         cell.label.text = "Gappe"
-        
-        cell.viewMessage.translatesAutoresizingMaskIntoConstraints = false
-        cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (cell.bounds.width - 30)))
 
         if message.object(at: 4) as? String == "" {
-            
-            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .top, relatedBy: .equal, toItem: cell, attribute: .top, multiplier: 1, constant: 7))
-            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .trailing, relatedBy: .equal, toItem: cell, attribute: .trailing, multiplier: 1, constant: -15))
-            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .bottom, relatedBy: .equal, toItem: cell, attribute: .bottom, multiplier: 1, constant: -7))
             
             cell.label.text = (UserDefaults.standard.object(forKey: "nome") as? String)?.lowercased().capitalized
             cell.message.textAlignment = NSTextAlignment.right
@@ -103,10 +96,6 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         else {
             
-            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .top, relatedBy: .equal, toItem: cell, attribute: .top, multiplier: 1, constant: 7))
-            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .leading, relatedBy: .equal, toItem: cell, attribute: .leading, multiplier: 1, constant: 15))
-            cell.addConstraint(NSLayoutConstraint(item: cell.viewMessage, attribute: .bottom, relatedBy: .equal, toItem: cell, attribute: .bottom, multiplier: 1, constant: -7))
-            
             cell.message.textAlignment = NSTextAlignment.left
             cell.label.textAlignment = NSTextAlignment.left
             
@@ -115,6 +104,7 @@ class MessageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             
             cell.viewMessage.backgroundColor = #colorLiteral(red: 0.9987735152, green: 0.7140055299, blue: 0, alpha: 0.2)
         }
+        
         return cell
     }
     

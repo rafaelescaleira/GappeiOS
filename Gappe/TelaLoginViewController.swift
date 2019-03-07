@@ -31,12 +31,18 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
             
             if !success {
                 
-                self.present(AlertModel.instance.setAlert(title: title, message: message, titleColor: #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1), style: .alert), animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    
+                    self.labelValidacao.text = "Login ou Senha inválidos."
+                }
             }
             
             else {
                 
-                self.DoLogin(login, senha)
+                DispatchQueue.main.async {
+                    
+                    self.DoLogin(login, senha)
+                }
             }
         }
         

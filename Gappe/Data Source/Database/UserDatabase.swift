@@ -12,11 +12,11 @@ import SharkORM
 class UserDatabase: SRKObject {
     
     @objc dynamic var user_id: Int = 0
-    @objc dynamic var user_nome: String?
-    @objc dynamic var user_telefone: String?
-    @objc dynamic var user_email: String?
-    @objc dynamic var user_foto: String?
-    @objc dynamic var user_device_token: String?
+    @objc dynamic var user_nome: String = ""
+    @objc dynamic var user_telefone: String = ""
+    @objc dynamic var user_email: String = ""
+    @objc dynamic var user_foto: Data = Data()
+    @objc dynamic var user_device_token: String = ""
     @objc dynamic var user_trocar_senha: Bool = false
     @objc dynamic var user_isLogin: Bool = false
 }

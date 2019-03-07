@@ -13,20 +13,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var nome: UILabel!
     @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var imagemPerfil: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var viewProfile: CustomNavigationView!
+    @IBOutlet weak var heightBackImage: NSLayoutConstraint!
     
     let database = DatabaseModel()
     
     var user = UserDatabase.query().fetch().firstObject as? UserDatabase ?? UserDatabase()
     let menuTitles = ["Comunicados", "Agenda Gappe", "Mensagens", "Meu Perfil", "Escola Gappe", "Sobre", "Sair"]
-    let menuTitleImages: [UIImage] = [UIImage.fontAwesomeIcon(name: .bell, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
-    UIImage.fontAwesomeIcon(name: .calendarAlt, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
-    UIImage.fontAwesomeIcon(name: .comments, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
-    UIImage.fontAwesomeIcon(name: .user, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
-    UIImage.fontAwesomeIcon(name: .school, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
-    UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25)),
-    UIImage.fontAwesomeIcon(name: .powerOff, style: .solid, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), size: CGSize(width: 25, height: 25))]
+    let menuTitleImages: [UIImage] = [UIImage(named: "Menu0")!,
+    UIImage(named: "Menu1")!,
+    UIImage(named: "Menu2")!,
+    UIImage(named: "Menu3")!,
+    UIImage(named: "Menu4")!,
+    UIImage(named: "Menu5")!,
+    UIImage(named: "Menu6")!]
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -38,7 +41,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.revealViewController()?.rearViewRevealWidth = 291.66
         self.revealViewController()?.rearViewRevealOverdraw = 0
         
-        imagemPerfil.layer.cornerRadius = imagemPerfil.frame.size.height/2
+        imagemPerfil.layer.cornerRadius = 15
         imagemPerfil.clipsToBounds = true
         
     }
@@ -52,8 +55,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             DispatchQueue.main.async {
                 
-                self.nome.text = self.user.user_nome?.lowercased().capitalized
+                self.nome.text = self.user.user_nome.lowercased().capitalized
                 self.email.text = self.user.user_email
+                self.imagemPerfil.image = UIImage(data: self.user.user_foto) ?? UIImage()
+                self.backgroundImage.image = UIImage(data: self.user.user_foto) ?? UIImage()
+                self.heightBackImage.constant = self.viewProfile.bounds.height
             }
         }
     }
@@ -91,6 +97,29 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.selectionStyle = .none
         return cell
     }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadImage(from url: URL) {
+        
+        print("Download Started")
+        
+        getData(from: url) { data, response, error in
+            
+            guard let data = data, error == nil else { return }
+            
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            
+            DispatchQueue.main.async() {
+                
+                self.imagemPerfil.image = UIImage(data: data)
+            }
+        }
+    }
 
 }
 
@@ -113,6 +142,3 @@ class MenuTableViewCell: UITableViewCell {
         self.iconImage.image = image
     }
 }
-
-
-

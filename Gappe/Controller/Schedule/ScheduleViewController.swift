@@ -164,15 +164,15 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         switch (self.agendaComunicados[indexPath.row].comunicados_tipo_id) {
             
         case "1":
-            cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoice, style: .solid, textColor: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), size: cell.iconImage.bounds.size)
+            cell.iconImage.image = UIImage(named: "Administrativo")
             cell.viewPresent.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.1)
             break;
         case "2":
-            cell.iconImage.image = .fontAwesomeIcon(name: .fileInvoiceDollar, style: .solid, textColor: #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1), size: cell.iconImage.bounds.size)
+            cell.iconImage.image = UIImage(named: "Financeiro")
             cell.viewPresent.backgroundColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 0.1)
             break;
         case "3":
-            cell.iconImage.image = .fontAwesomeIcon(name: .graduationCap, style: .solid, textColor: #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 1), size: cell.iconImage.bounds.size)
+            cell.iconImage.image = UIImage(named: "Pegagogico")
             cell.viewPresent.backgroundColor = #colorLiteral(red: 0.146513015, green: 0.2318824828, blue: 0.5776452422, alpha: 0.1)
             break;
         default:
