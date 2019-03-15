@@ -10,20 +10,31 @@ import UIKit
 
 class TelaLoginViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var Login: UITextField!
     @IBOutlet weak var Senha: UITextField!
     @IBOutlet weak var SalvarBtn: UIButton!
     @IBOutlet weak var labelValidacao: UILabel!
+    
     let database = DatabaseModel()
     var comunicadosObject:NSMutableArray = NSMutableArray()
     var mensagensObject:NSMutableArray = NSMutableArray()
     
     @IBAction func SalvarAction(_ sender: UIButton) {
+        
+        self.activityIndicator.alpha = 1
+        self.activityIndicator.startAnimating()
+        self.SalvarBtn.alpha = 0
+        
         let login = Login.text!
         let senha = Senha.text!
         
-        if (login == "" || senha == ""){
+        if (login == "" || senha == "") {
+            
             self.labelValidacao.text = "Um ou mais campos vazios."
+            self.activityIndicator.alpha = 0
+            self.activityIndicator.stopAnimating()
+            self.SalvarBtn.alpha = 1
             return
         }
         
@@ -33,6 +44,9 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
                 
                 DispatchQueue.main.async {
                     
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
+                    self.SalvarBtn.alpha = 1
                     self.labelValidacao.text = "Login ou Senha inválidos."
                 }
             }
@@ -91,8 +105,8 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func DoLogin(_ user:String, _ psw:String)
-    {
+    func DoLogin(_ user:String, _ psw:String) {
+        
         let url = URL(string: "\(database.getURLBase())/api/users/login")
         let session = URLSession.shared
         
@@ -110,20 +124,36 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 200 {
                 
                 guard let _:Data = data else {
+                    
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
+                    self.SalvarBtn.alpha = 1
+                    
                     return
+                    
                 }
                 
                 let json:Any?
                 
                 do {
+                    
                     json = try JSONSerialization.jsonObject(with: data!, options: [])
-                } catch {
+                }
+                
+                catch {
+                    
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
+                    self.SalvarBtn.alpha = 1
+                    
                     return
                 }
                 
                 guard let server_response = json as? NSDictionary else {
+                    
                     return
                 }
+                
                 //print(server_response)
                 UserDefaults.standard.set("yes", forKey: "logado")
                 UserDefaults.standard.set(server_response["id"] as! String, forKey: "id_user")
@@ -134,23 +164,43 @@ class TelaLoginViewController: UIViewController, UITextFieldDelegate {
                 UserDefaults.standard.synchronize()
                 
                 DispatchQueue.main.async() {
+                    
                     self.getComunicadosEMensagens()
                     self.database.enviaToken()
                     
                     let when = DispatchTime.now() + 2.5
+                    
                     DispatchQueue.main.asyncAfter(deadline: when) {
+                        
                         self.database.configuraBancoInicial(dadosComunicados: self.comunicadosObject, dadosMensagens: self.mensagensObject)
                     }
                     
                     if server_response["trocar_senha"] as! Bool == false {
+                        
+                        self.activityIndicator.alpha = 0
+                        self.activityIndicator.stopAnimating()
+                        self.SalvarBtn.alpha = 1
                         self.performSegue(withIdentifier: "loginAutorizado", sender: nil)
-                    } else if server_response["trocar_senha"] as! Bool == true {
+                    }
+                    
+                    else if server_response["trocar_senha"] as! Bool == true {
+                        
+                        self.activityIndicator.alpha = 0
+                        self.activityIndicator.stopAnimating()
+                        self.SalvarBtn.alpha = 1
+                        
                         self.performSegue(withIdentifier: "trocarSenhaSegue", sender: nil)
                     }
                 }
             }
+                
             else if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 401 {
+                
                 DispatchQueue.main.async() {
+                    
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
+                    self.SalvarBtn.alpha = 1
                     self.labelValidacao.text = "Login ou Senha inválidos."
                 }
             }

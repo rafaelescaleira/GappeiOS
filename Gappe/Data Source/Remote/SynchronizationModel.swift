@@ -194,7 +194,24 @@ class SynchronizationModel {
                         
                         SynchronizationModel.instance.requestProfileImage(user: newData, completion: { (s, t, m) in
                             
-                            completion(s, t, m)
+                            if !s {
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    let image = UIImage(named: "default-user-image")!
+                                    newData.user_foto = UIImageJPEGRepresentation(image, 1.0)!
+                                    newData.commit()
+                                    completion(true, "", "")
+                                }
+                            }
+                            
+                            else {
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    completion(true, "", "")
+                                }
+                            }
                         })
                     }
                 }
@@ -282,7 +299,6 @@ class SynchronizationModel {
     func requestProfileImage(user: UserDatabase, completion: @escaping (Bool, String, String) -> ()) {
         
         let url: URL = URL(string: LINK_PROFILE_IMAGE + "\(user.user_id)" + "/foto")!
-        print(url)
         let session = URLSession.shared
         var request = URLRequest(url: url)
         
@@ -297,7 +313,7 @@ class SynchronizationModel {
                 guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                     let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                     let data = data, error == nil
-                    else { return }
+                    else { completion(false, "", ""); return }
                 user.user_foto = data
                 user.commit()
                 

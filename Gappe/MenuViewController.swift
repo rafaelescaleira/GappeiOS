@@ -13,7 +13,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var nome: UILabel!
     @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var imagemPerfil: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewProfile: CustomNavigationView!
@@ -58,7 +57,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.nome.text = self.user.user_nome.lowercased().capitalized
                 self.email.text = self.user.user_email
                 self.imagemPerfil.image = UIImage(data: self.user.user_foto) ?? UIImage()
-                self.backgroundImage.image = UIImage(data: self.user.user_foto) ?? UIImage()
                 self.heightBackImage.constant = self.viewProfile.bounds.height
             }
         }
