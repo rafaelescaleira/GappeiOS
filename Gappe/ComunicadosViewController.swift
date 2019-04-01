@@ -171,7 +171,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.communicatedID = communicatedFind[indexPath.row].comunicados_id
         
-        if self.communicatedFind[indexPath.row].comunicados_attach != "" {
+        if self.communicatedFind[indexPath.row].comunicados_attach.count != 0 {
             
             performSegue(withIdentifier: "segueComAnexo", sender: self)
         }
@@ -189,7 +189,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommunicatedTableViewCell", for: indexPath) as? CommunicatedTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         cell.setCell(title: communicatedFind[indexPath.row].comunicados_titulo, description: communicatedFind[indexPath.row].comunicados_texto, date: communicatedFind[indexPath.row].comunicados_data)
-        cell.attachmentImage.image = communicatedFind[indexPath.row].comunicados_attach == "" ? UIImage() : UIImage(named: "ic_attach_file")!
+        cell.attachmentImage.image = communicatedFind[indexPath.row].comunicados_attach.count == 0 ? UIImage() : UIImage(named: "ic_attach_file")!
         
         switch (communicatedFind[indexPath.row].comunicados_tipo_id) {
             

@@ -24,7 +24,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
     @IBOutlet weak var yesHeight: NSLayoutConstraint!
     
     var comunicadoSelecionado = ComunicadosDatabase()
-    var urlAttach = String()
+    var urlAttach: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
         
         self.titulo.text = self.comunicadoSelecionado.comunicados_titulo
         self.texto.text = self.comunicadoSelecionado.comunicados_texto
-        self.urlAttach = self.comunicadoSelecionado.comunicados_attach!
+        self.urlAttach = self.comunicadoSelecionado.comunicados_attach
         
         if comunicadoSelecionado.comunicados_recebe_resposta == "0" {
             
@@ -95,9 +95,24 @@ extension ComunicadoINTERNOcomAnexoViewController {
     
     @IBAction func seeAttachButtonPressed(_ sender: Any) {
         
-        guard let url = URL(string: self.urlAttach) else { return }
-        let svc = SFSafariViewController(url: url)
-        present(svc, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Anexos", message: "Selecione o anexo que deseja", preferredStyle: .alert)
+        var index = 1
+        
+        for url in self.urlAttach {
+            
+            alert.addAction(UIAlertAction(title: "Anexo \(index)", style: .default, handler: { (_) in
+                
+                guard let url = URL(string: url) else { return }
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+            }))
+            
+            index = index + 1
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

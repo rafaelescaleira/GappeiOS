@@ -159,7 +159,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         cell.setCell(title: self.agendaComunicados[indexPath.row].comunicados_titulo, description: self.agendaComunicados[indexPath.row].comunicados_texto, date: self.agendaComunicados[indexPath.row].comunicados_data)
-        cell.attachmentImage.image = self.agendaComunicados[indexPath.row].comunicados_attach == "" ? UIImage() : UIImage(named: "ic_attach_file")!
+        cell.attachmentImage.image = self.agendaComunicados[indexPath.row].comunicados_attach.count == 0 ? UIImage() : UIImage(named: "ic_attach_file")!
         
         switch (self.agendaComunicados[indexPath.row].comunicados_tipo_id) {
             
@@ -187,7 +187,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         self.communicatedID = self.agendaComunicados[indexPath.row].comunicados_id
         let anexo = self.agendaComunicados[indexPath.row].comunicados_attach
         
-        if anexo != "" {
+        if anexo.count != 0 {
             
             performSegue(withIdentifier: "comAnexo", sender: self)
         }

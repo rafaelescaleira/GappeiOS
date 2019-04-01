@@ -103,6 +103,7 @@ class SynchronizationModel {
         
         let url: URL = URL(string: LINK_COMMUNICATED + userID + "/" + DatabaseSharkModel.instance.getLastChangeCommunicated())!
         let session = URLSession.shared
+        print(url)
         let task = session.dataTask(with: url) { (data, response, error) in
             
             let (success, dataResult, title, message) = self.requestCompletionHandler(data: data, response: response, error: error)
@@ -133,7 +134,14 @@ class SynchronizationModel {
                                 newData.comunicados_mostrar_agenda = userDict["mostrar_agenda"] as? String ?? ""
                                 newData.comunicados_criado_em = userDict["criado_em"] as? Int ?? Int.min
                                 newData.comunicados_comunicados_responsavel_id = userDict["comunicados_responsavel_id"] as? String ?? ""
-                                newData.comunicados_attach = userDict["attach"] as? String ?? ""
+                                
+                                let links = userDict["attach"] as? [String] ?? []
+                                
+                                for link in links {
+                                    
+                                    newData.comunicados_attach = link.components(separatedBy: ";")
+                                }
+                                
                                 newData.comunicados_resposta = Int.min
                                 
                                 newData.commit()
@@ -329,62 +337,6 @@ class SynchronizationModel {
         task.resume()
     }
     
-    func requestMessage(userID: String, completion: @escaping (Bool, String, String) -> ()) {
-        
-        let url: URL = URL(string: LINK_MENSAGEN + userID + "/" + DatabaseSharkModel.instance.getLastChangeCommunicated())!
-        let session = URLSession.shared
-        let task = session.dataTask(with: url) { (data, response, error) in
-            
-            let (success, dataResult, title, message) = self.requestCompletionHandler(data: data, response: response, error: error)
-            
-            if success == false { completion(false, title, message); return }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: dataResult, options: [])
-                if let array = json as? [Any], array.isEmpty == false {
-                    
-                    DispatchQueue.global(qos: .background).async {
-                        
-                        for communicate in array {
-                            
-                            autoreleasepool {
-                                
-                                guard let userDict = communicate as? [String: Any] else { return }
-                                let newData = ComunicadosDatabase()
-                                
-                                newData.comunicados_id = (userDict["id"] as? NSString)?.integerValue ?? Int.min
-                                newData.comunicados_titulo = userDict["titulo"] as? String ?? ""
-                                newData.comunicados_texto = userDict["texto"] as? String ?? ""
-                                newData.comunicados_data = userDict["data"] as? String ?? ""
-                                newData.comunicados_tipo_id = userDict["tipo_id"] as? String ?? ""
-                                newData.comunicados_colaborador_id = userDict["colaborador_id"] as? String ?? ""
-                                newData.comunicados_situacao = userDict["situacao"] as? String ?? ""
-                                newData.comunicados_recebe_resposta = userDict["recebe_resposta"] as? String ?? ""
-                                newData.comunicados_mostrar_agenda = userDict["mostrar_agenda"] as? String ?? ""
-                                newData.comunicados_criado_em = userDict["criado_em"] as? Int ?? Int.min
-                                newData.comunicados_comunicados_responsavel_id = userDict["comunicados_responsavel_id"] as? String ?? ""
-                                newData.comunicados_attach = userDict["attach"] as? String ?? ""
-                                newData.comunicados_resposta = Int.min
-                                
-                                newData.commit()
-                            }
-                        }
-                        
-                        DispatchQueue.main.async {
-                            
-                            print("Finalizado a obtenção de Tipos de Pessoas")
-                            completion(true, title, message)
-                        }
-                    }
-                }
-                    
-                else { return }
-            }
-                
-            catch {}
-        }
-        
-        task.resume()
-    }
+    
     
 }
