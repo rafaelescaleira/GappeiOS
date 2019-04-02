@@ -137,9 +137,14 @@ class SynchronizationModel {
                                 
                                 let links = userDict["attach"] as? [String] ?? []
                                 
+                                if links.count == 0 {
+                                    
+                                    newData.comunicados_attach = ""
+                                }
+                                
                                 for link in links {
                                     
-                                    newData.comunicados_attach = link.components(separatedBy: ";")
+                                    newData.comunicados_attach = link
                                 }
                                 
                                 newData.comunicados_resposta = Int.min

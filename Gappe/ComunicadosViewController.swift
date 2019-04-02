@@ -58,7 +58,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
-
+        
         activity_view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         activity_view.color = #colorLiteral(red: 0.1450980392, green: 0.231372549, blue: 0.5764705882, alpha: 1)
         activity_view.center = CGPoint(x: self.view.center.x, y: view.center.y)
@@ -171,7 +171,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.communicatedID = communicatedFind[indexPath.row].comunicados_id
         
-        if self.communicatedFind[indexPath.row].comunicados_attach.count != 0 {
+        if self.communicatedFind[indexPath.row].comunicados_attach != "" {
             
             performSegue(withIdentifier: "segueComAnexo", sender: self)
         }
@@ -189,7 +189,7 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommunicatedTableViewCell", for: indexPath) as? CommunicatedTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         cell.setCell(title: communicatedFind[indexPath.row].comunicados_titulo, description: communicatedFind[indexPath.row].comunicados_texto, date: communicatedFind[indexPath.row].comunicados_data)
-        cell.attachmentImage.image = communicatedFind[indexPath.row].comunicados_attach.count == 0 ? UIImage() : UIImage(named: "ic_attach_file")!
+        cell.attachmentImage.image = communicatedFind[indexPath.row].comunicados_attach == "" ? UIImage() : UIImage(named: "ic_attach_file")!
         
         switch (communicatedFind[indexPath.row].comunicados_tipo_id) {
             

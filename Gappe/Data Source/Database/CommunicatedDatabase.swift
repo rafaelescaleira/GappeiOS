@@ -22,6 +22,6 @@ class ComunicadosDatabase: SRKObject {
     @objc dynamic var comunicados_criado_em: Int = 0
     @objc dynamic var comunicados_comunicados_responsavel_id: String?
     @objc dynamic var comunicados_colaborador_id: String?
-    @objc dynamic var comunicados_attach: [String] = []
+    @objc dynamic var comunicados_attach: String?
     @objc dynamic var comunicados_resposta: Int = 0
 }

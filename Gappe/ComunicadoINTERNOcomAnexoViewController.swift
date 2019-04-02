@@ -35,7 +35,7 @@ class ComunicadoINTERNOcomAnexoViewController: UIViewController {
         
         self.titulo.text = self.comunicadoSelecionado.comunicados_titulo
         self.texto.text = self.comunicadoSelecionado.comunicados_texto
-        self.urlAttach = self.comunicadoSelecionado.comunicados_attach
+        self.urlAttach = self.comunicadoSelecionado.comunicados_attach!.components(separatedBy: ";")
         
         if comunicadoSelecionado.comunicados_recebe_resposta == "0" {
             
