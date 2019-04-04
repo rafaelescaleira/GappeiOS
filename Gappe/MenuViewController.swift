@@ -82,6 +82,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             SharkORM.rawQuery("DELETE FROM UserDatabase")
             SharkORM.rawQuery("DELETE FROM ComunicadosDatabase")
+            SharkORM.rawQuery("DELETE FROM VersionDeleteDatabase")
+            
             database.deletaBanco()
         }
         

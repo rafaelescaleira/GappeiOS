@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-        RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 3) as Date)
+        RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 0) as Date)
         
         return true
     }
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             getNovosDados(id_user: idUser)
             
-            let when = DispatchTime.now() + 2.5
+            let when = DispatchTime.now()
             DispatchQueue.main.asyncAfter(deadline: when) {
                 if self.mensagensObject.count > 0 {
                     self.database.insertMensagens(dadosMensagens: self.mensagensObject)
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     while let presentedController = currentController.presentedViewController {
                         currentController = presentedController
                     }
-                    let when = DispatchTime.now() + 2.5
+                    let when = DispatchTime.now()
                     DispatchQueue.main.asyncAfter(deadline: when) {
                         let myCustomViewController: MessageVC = MessageVC(nibName: nil, bundle: nil)
                       

@@ -64,8 +64,6 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
         activity_view.center = CGPoint(x: self.view.center.x, y: view.center.y)
         self.view.addSubview(activity_view)
         activity_view.startAnimating()
-        
-        self.tableComunicados.reloadData()
     }
     
     @IBAction func refresh(sender: AnyObject) {
@@ -102,6 +100,15 @@ class ComunicadosViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     self.activity_view.stopAnimating()
                     self.activity_view.hidesWhenStopped = true
+                    
+                    if VersionDeleteDatabase.query().count() == 0 {
+                        
+                        let versionUpdate = VersionDeleteDatabase()
+                        versionUpdate.isUpdate = false
+                        versionUpdate.commit()
+                        
+                        SharkORM.rawQuery("DELETE FROM ComunicadosDatabase")
+                    }
                     
                     SynchronizationModel.instance.requestCommunicated(userID: userID) { (success, title, message) in
                         

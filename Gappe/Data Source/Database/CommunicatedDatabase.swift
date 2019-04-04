@@ -25,3 +25,8 @@ class ComunicadosDatabase: SRKObject {
     @objc dynamic var comunicados_attach: String?
     @objc dynamic var comunicados_resposta: Int = 0
 }
+
+class VersionDeleteDatabase: SRKObject {
+    
+    @objc dynamic var isUpdate: Bool = true
+}

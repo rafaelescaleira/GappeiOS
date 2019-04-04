@@ -41,7 +41,7 @@ class ApresentacaoCollectionViewCell: UICollectionViewCell {
         
         attributedText.append(NSAttributedString(string: "\n\n\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray]))
         
-        textView.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9647058824, blue: 1, alpha: 1)
+        textView.backgroundColor = .clear
         textView.clipsToBounds = true
         textView.layer.cornerRadius = 15
         textView.attributedText = attributedText
