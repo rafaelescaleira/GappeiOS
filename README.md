@@ -6,10 +6,10 @@
 
 <p></p>
 <p align="center">
-<img src="https://img.shields.io/badge/Swift-5.0-brightgreen.svg" alt="Swift 5.0"/>
+<img src="https://img.shields.io/badge/Swift-4.0-brightgreen.svg" alt="Swift 5.0"/>
 <img src="https://img.shields.io/badge/platform-iOS-purple.svg" alt="Platform: iOS"/>
-<img src="https://img.shields.io/badge/Xcode-11-orange.svg" alt="xCode 11"/>
-<img src="https://img.shields.io/badge/iOS-13-blue.svg" alt="iOS 13"/>
+<img src="https://img.shields.io/badge/Xcode-10-orange.svg" alt="xCode 11"/>
+<img src="https://img.shields.io/badge/iOS-11-blue.svg" alt="iOS 13"/>
 </p>
 
 <p align="left">É importante deixar claro que a escola não tem um método fechado, mas sim uma metodologia de educação que consideramos própria da Escola GAPPE, com base em estudos e referências, como os teóricos Vygostky e Guy Brousseau, em que as crianças constroem o conhecimento, por meio de problematizações levantadas pelo professor, fazendo que o aluno exponha seu conhecimento prévio, formule hipóteses, que serão depois compartilhadas e validadas pelo grupo e, só depois de todo esse processo, é que ele irá pesquisar o conhecimento histórico e universal sobre o assunto, fazendo a institucionalização do conhecimento, seguido de exercitação e avaliação.
